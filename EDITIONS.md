@@ -1,4 +1,4 @@
-# Editions & License — Audiogravity
+# Editions / Plans — Audiogravity
 
 Audiogravity is available in three tiers: a **30-day trial** with full access,
 a free **Starter Edition** that activates automatically when the trial ends,

@@ -56,7 +56,7 @@
                     <path
                         d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
                 </svg>
-                GitHub Releases <span
+                Releases <span
                     style="font-size:10px;font-weight:600;letter-spacing:.08em;color:var(--warn)">COMING SOON</span>
             </a>
         </div>
@@ -87,8 +87,8 @@
                     <div class="l">Free trial</div>
                 </div>
                 <div class="hero-proof-item">
-                    <div class="n">€29</div>
-                    <div class="l">Pro · one-time</div>
+                    <div class="n">€49</div>
+                    <div class="l">Pro · lifetime</div>
                 </div>
                 <div class="hero-proof-item">
                     <div class="n">1×</div>
@@ -266,7 +266,7 @@
                         highlighting for JSON, INI, XML and libconfig. Live validation before save — syntax, existing
                         systemd units, circular dependencies, duplicates. Side-by-side diff. Automatic timestamped
                         backup before every change.</p>
-                    <span class="fb-chip">mpd.conf · roon · shairport-sync · upmpdcli · live diff</span>
+                    <span class="fb-chip">mpd.conf · roon · AirPlay · upmpdcli · live diff</span>
                 </div>
 
                 <div class="fb span3 dark">
@@ -342,6 +342,31 @@
                     <p>Face ID, Touch ID, fingerprint, YubiKey. Multiple devices per user, managed individually.
                         Role-based access — Admin, User, Guest — with session history.</p>
                     <span class="fb-chip">FIDO2 · Face ID · YubiKey · RBAC</span>
+                </div>
+
+                <div class="fb span2">
+                    <span class="fb-tier starter">STARTER</span>
+                    <div class="fb-icon"><svg viewBox="0 0 24 24">
+                            <path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/>
+                            <path d="M10.27 21a1.94 1.94 0 0 0 3.46 0"/>
+                        </svg></div>
+                    <h3>Push notifications</h3>
+                    <p>Get notified the instant a critical service fails, a DAC disconnects, or temperature
+                        crosses your threshold. Even when the PWA is closed.</p>
+                    <span class="fb-chip">Service down · DAC disconnect · Temperature · Background push</span>
+                </div>
+
+                <div class="fb span2">
+                    <span class="fb-tier starter">STARTER</span>
+                    <div class="fb-icon"><svg viewBox="0 0 24 24">
+                            <circle cx="11" cy="11" r="7"/>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                            <path d="M11 8v6M8 11h6"/>
+                        </svg></div>
+                    <h3>Auto-discovery</h3>
+                    <p>Audiogravity scans your network on every reload. MPD instances, Roon Bridges, UPnP servers,
+                        AirPlay receivers — all picked up automatically.</p>
+                    <span class="fb-chip">MPD · Roon · UPnP · AirPlay · SSDP</span>
                 </div>
             </div>
         </div>
@@ -483,7 +508,7 @@
                     <ul class="rt-list">
                         <li><span class="tag">Policy</span><span>SCHED_FIFO (strict) or SCHED_RR (round-robin RT)</span>
                         </li>
-                        <li><span class="tag">Priority</span><span>1 → 99. MPD at FIFO/80, shairport-sync at FIFO/60,
+                        <li><span class="tag">Priority</span><span>1 → 99. MPD at FIFO/80, AirPlay at FIFO/60,
                                 workers below.</span></li>
                         <li><span class="tag">Affinity</span><span>Pin each service to one or more dedicated cores,
                                 isolated from the rest of the system.</span></li>
@@ -547,38 +572,46 @@
         <div class="w">
             <div class="section-label">Where it sits</div>
             <h2 class="section-title">Five layers.<br><em>Audiogravity covers three.</em></h2>
-            <p class="section-sub">A streaming system is a stack. Audiogravity does not compete with audio engines like MPD, Roon Bridge or HQPlayer — it sits above them. The diagram below makes its position explicit.</p>
+            <p class="section-sub">A streaming system is a stack. Audiogravity does not compete with audio engines like MPD, Roon Bridge or HQPlayer — it sits above them.</p>
 
-            <div class="layers">
-                <div class="layer ag">
-                    <div class="layer-tag">Layer 5</div>
-                    <div class="layer-name">User Interface</div>
-                    <div class="layer-sub">How you click play — browser, phone, tablet</div>
-                    <div class="layer-mark">Audiogravity</div>
+            <div class="stack">
+                <div class="stack-block ag">
+                    <span class="stack-num">5</span>
+                    <div class="stack-body">
+                        <div class="stack-name">User Interface</div>
+                        <div class="stack-sub">Browser · phone · tablet · PWA</div>
+                    </div>
+                    <span class="stack-tag">Audiogravity</span>
                 </div>
-                <div class="layer ag">
-                    <div class="layer-tag">Layer 4</div>
-                    <div class="layer-name">Control / Orchestration</div>
-                    <div class="layer-sub">Source switching, transport, volume, monitoring</div>
-                    <div class="layer-mark">Audiogravity</div>
+                <div class="stack-block ag">
+                    <span class="stack-num">4</span>
+                    <div class="stack-body">
+                        <div class="stack-name">Control / Orchestration</div>
+                        <div class="stack-sub">Source switching · transport · volume · monitoring</div>
+                    </div>
+                    <span class="stack-tag">Audiogravity</span>
                 </div>
-                <div class="layer">
-                    <div class="layer-tag">Layer 3</div>
-                    <div class="layer-name">Content Sources</div>
-                    <div class="layer-sub">Where files and streams come from</div>
-                    <div class="layer-mark dim">NAS · Qobuz · Tidal · MinimServer · upmpdcli</div>
+                <div class="stack-block ghost">
+                    <span class="stack-num">3</span>
+                    <div class="stack-body">
+                        <div class="stack-name">Content Sources</div>
+                        <div class="stack-sub">NAS · Qobuz · Tidal · MinimServer · upmpdcli</div>
+                    </div>
                 </div>
-                <div class="layer">
-                    <div class="layer-tag">Layer 2</div>
-                    <div class="layer-name">Audio Engine</div>
-                    <div class="layer-sub">Decodes and sends bits to the DAC</div>
-                    <div class="layer-mark dim">MPD · Roon Bridge · HQPlayer NAA · shairport-sync · upmpdcli</div>
+                <div class="stack-block ghost">
+                    <span class="stack-num">2</span>
+                    <div class="stack-body">
+                        <div class="stack-name">Audio Engine</div>
+                        <div class="stack-sub">MPD · Roon Bridge · HQPlayer NAA · AirPlay</div>
+                    </div>
                 </div>
-                <div class="layer ag">
-                    <div class="layer-tag">Layer 1</div>
-                    <div class="layer-name">OS / Kernel</div>
-                    <div class="layer-sub">RT scheduling, CPU pinning, IRQs, ALSA</div>
-                    <div class="layer-mark">Audiogravity tunes it</div>
+                <div class="stack-block ag">
+                    <span class="stack-num">1</span>
+                    <div class="stack-body">
+                        <div class="stack-name">OS / Kernel</div>
+                        <div class="stack-sub">RT scheduling · CPU pinning · IRQs · ALSA</div>
+                    </div>
+                    <span class="stack-tag">Audiogravity tunes it</span>
                 </div>
             </div>
 
@@ -764,12 +797,12 @@
                         </tr>
                         <tr>
                             <td class="cmp-cap"><b>Pricing model</b></td>
-                            <td class="cmp-ag"><b>Free (Starter) / One-time €29 (Pro)</b></td>
-                            <td>$150 / year</td>
-                            <td>Free / Premium</td>
+                            <td class="cmp-ag"><b>Free (Starter) / €49 lifetime (Pro)</b></td>
+                            <td>$14.99 / month or $829.99 lifetime</td>
+                            <td>Free / Premium €69.99 / year</td>
                             <td>Free</td>
-                            <td>€265 one-time</td>
-                            <td>Subscription</td>
+                            <td>€265 lifetime</td>
+                            <td>$49.99 / year or $199 lifetime</td>
                         </tr>
                     </tbody>
                 </table>
@@ -822,10 +855,10 @@
     <section class="section alt" id="pricing">
         <div class="w">
             <div class="section-label">Editions &amp; license</div>
-            <h2 class="section-title">Three tiers.<br><em>One-time payment.</em></h2>
+            <h2 class="section-title">Three tiers.<br><em>Lifetime license.</em></h2>
             <p class="section-sub">Audiogravi<sup>ty</sup> ships in three tiers: a 30-day Trial with full access, a free
                 Starter
-                Edition that activates automatically when the trial ends, and a Pro License — a one-time purchase that
+                Edition that activates automatically when the trial ends, and a Pro License — a lifetime license that
                 permanently unlocks all features on one machine.</p>
 
             <div class="pricing-grid">
@@ -879,8 +912,8 @@
                 <!-- Pro -->
                 <div class="pricing-plan featured">
                     <div class="pp-tier">Pro License</div>
-                    <div class="pp-price"><span class="currency">€</span>29</div>
-                    <div class="pp-period">One-time · 1 machine · perpetual</div>
+                    <div class="pp-price"><span class="currency">€</span>49</div>
+                    <div class="pp-period">Lifetime · 1 machine</div>
                     <p class="pp-desc">Permanently unlocks every Pro feature. Bound to one installation. Includes all
                         v1.x updates. Pro holders get a preferential upgrade price for new major versions.</p>
                     <div class="pp-border">
@@ -915,7 +948,7 @@
                 <div class="howto-step">
                     <span class="n">01</span>
                     <span class="t">Pay with PayPal</span>
-                    <span class="d">Click "Pay with PayPal" in Admin › License. €29 one-time.</span>
+                    <span class="d">Click "Pay with PayPal" in Admin › License. €49 lifetime.</span>
                 </div>
                 <div class="howto-step">
                     <span class="n">02</span>
@@ -1120,21 +1153,20 @@
                 <div class="footer-col">
                     <h4>Resources</h4>
                     <a href="https://audiogravity.app">Landing</a>
-                    <a href="#" style="pointer-events:none;opacity:.45">GitHub Releases <span
+                    <a href="#" style="pointer-events:none;opacity:.45">Releases <span
                             style="font-size:10px;font-weight:600;letter-spacing:.08em;color:var(--warn)">COMING
                             SOON</span></a>
                     <a href="https://github.com/ad5030/audiogravity/issues">Issues</a>
                 </div>
                 <div class="footer-col">
                     <h4>Legal</h4>
-                    <a href="https://github.com/ad5030/audiogravity/blob/main/EDITIONS.md">Editions / Plan</a>
+                    <a href="https://github.com/ad5030/audiogravity/blob/main/EDITIONS.md">Editions / Plans</a>
                     <a href="https://github.com/ad5030/audiogravity/blob/main/EULA.md">EULA</a>
                     <a href="mailto:audiogravity@di-marco.net">Contact</a>
                 </div>
             </div>
             <div class="footer-bottom">
-                <span>© 2026 Audiogravi<sup>ty</sup> — <a href="https://di-marco.net"
-                        style="color:inherit;text-decoration:none">di-marco.net</a></span>
+                <span>© 2026 Audiogravi<sup>ty</sup></span>
                 <span>French law · EULA</span>
                 <span>Made with care</span>
             </div>
