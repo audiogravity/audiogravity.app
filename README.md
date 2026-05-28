@@ -119,13 +119,13 @@ curl -fsSL https://audiogravity.app/install-frontend.sh | sudo bash -s -- --toke
 
 | Suite | Tests | Status |
 |-------|------:|--------|
-| Backend (Python) | 65 | ✅ |
+| Backend (Python) | 53 | ✅ |
 | License Server (Python) | 15 | ✅ |
 | License Server (JS) | 9 | ✅ |
 | Frontend (JS) | 65 | ✅ |
-| **Total** | **154** | ✅ |
+| **Total** | **142** | ✅ |
 
-Last run: 2026-05-28 12:53 UTC
+Last run: 2026-05-28 17:42 UTC
 
 ## Coming soon
 
