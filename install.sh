@@ -6,16 +6,20 @@
 # Usage:
 #   curl -fsSL https://audiogravity.app/install.sh | sudo bash -s -- --token ghp_xxx
 #   curl -fsSL https://audiogravity.app/install.sh | sudo bash -s -- --token ghp_xxx --version 1.2.0
+#   curl -fsSL https://audiogravity.app/install.sh | sudo bash -s -- --token ghp_xxx --public-url https://your-domain
 
 set -e
 
 TOKEN=""
 VERSION=""
-EXTRA_ARGS=()
+COMMON_ARGS=()    # forwarded to both backend and frontend
+BACKEND_ARGS=()   # backend-only (the frontend installer rejects unknown flags)
 while [[ $# -gt 0 ]]; do
     case $1 in
-        --token)   TOKEN="$2";   EXTRA_ARGS+=("--token" "$2"); shift 2 ;;
-        --version) VERSION="$2"; EXTRA_ARGS+=("--version" "$2"); shift 2 ;;
+        --token)       TOKEN="$2";   COMMON_ARGS+=("--token" "$2");   shift 2 ;;
+        --version)     VERSION="$2"; COMMON_ARGS+=("--version" "$2"); shift 2 ;;
+        --vapid-email) BACKEND_ARGS+=("--vapid-email" "$2");          shift 2 ;;
+        --public-url)  BACKEND_ARGS+=("--public-url" "$2");           shift 2 ;;
         *) echo "Unknown argument: $1" >&2; exit 1 ;;
     esac
 done
@@ -36,8 +40,8 @@ echo "║   Backend + Frontend on this host     ║"
 echo "╚═══════════════════════════════════════╝"
 echo ""
 
-curl -fsSL "$BASE/install-backend.sh"  | bash -s -- "${EXTRA_ARGS[@]}"
-curl -fsSL "$BASE/install-frontend.sh" | bash -s -- "${EXTRA_ARGS[@]}"
+curl -fsSL "$BASE/install-backend.sh"  | bash -s -- "${COMMON_ARGS[@]}" "${BACKEND_ARGS[@]}"
+curl -fsSL "$BASE/install-frontend.sh" | bash -s -- "${COMMON_ARGS[@]}"
 
 echo ""
 echo "✓ Audiogravity installed (backend + frontend)."
