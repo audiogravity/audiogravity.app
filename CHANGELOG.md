@@ -9,6 +9,10 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+---
+
+## [0.9.2] - 2026-06-09
+
 **Focus: Qobuz Hi-Res streaming integration + DSD volume safety.**
 
 ### Added
@@ -34,7 +38,13 @@ and this landing) are documented here. Format based on
 - **[frontend] Qobuz catalog pills** (`ag-library-browse.js`): browse pills switch to
   Favorites / New Releases / Selection / Playlists when Qobuz is selected.
 - **[frontend] Qobuz icon** on source cards (optimized 56×56 webp).
+- **[tests] Qobuz OAuth2 unit tests** (24 tests): bundle extraction, service
+  persistence, OAuth flow, Pydantic models, router endpoints.
+- **[tests] Qobuz catalog browsing unit tests** (22 tests): featured albums,
+  playlists, playlist tracks, search, cover helper, library router endpoints.
 - **[tests] DSD volume unit tests** (10 tests).
+- **[dev] `./dev.sh test --report`** generates `TEST_REPORT.md` — markdown summary
+  with per-suite pass/fail/skip counts, durations, and failure detail.
 
 ### Changed
 - **[backend] Qobuz config cleanup** — removed `qobuz_app_id`, `qobuz_app_secret`,
@@ -43,6 +53,8 @@ and this landing) are documented here. Format based on
   and upgrade migration loop; `QOBUZ_FORMAT_ID=27` in `.env` template.
 - **[frontend] Topbar doc button** opens `audiogravity.app`; internal doc links removed
   from settings panel.
+- **[docs] Single source of truth** — `CHANGELOG.md` and `RELEASE_NOTES.md` consolidated
+  in the landing repository; AG-repo copies marked obsolete in `CLAUDE.md`.
 
 ### Fixed
 - **[backend] DSD volume protection** (`player/service.py`): 6 bugs causing volume to

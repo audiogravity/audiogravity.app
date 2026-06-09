@@ -5,7 +5,7 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ---
 
-## Unreleased
+## 0.9.2 — 2026-06-09
 
 ### Qobuz Hi-Res Streaming (full stack)
 
