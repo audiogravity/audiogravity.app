@@ -1,0 +1,186 @@
+# Audiogravity — Release Notes
+
+Synthesized overview of each release. For the full line-by-line changelog, see
+[CHANGELOG.md](CHANGELOG.md).
+
+---
+
+## Unreleased
+
+### Qobuz Hi-Res Streaming (full stack)
+
+Qobuz authentication migrated from deprecated username/password to **OAuth2**.
+New backend module handles the full lifecycle: bundle credential extraction,
+OAuth URL generation, browser login, token exchange, secret discovery, and
+persistent config. The library service uses header-based auth and correct API
+signature format. Search runs 3 parallel single-type calls; album and track
+queueing registers external stream metadata (title, artist, album, cover art)
+keyed by stable `eid`, so now-playing displays are correct despite ephemeral
+signed URLs. Qobuz appears as a virtual source in the player when connected.
+
+**Catalog browsing** — browse pills switch to Favorites / New Releases /
+Selection / Playlists when Qobuz is selected. Each category fetches from a
+dedicated Qobuz API endpoint. Editorial playlists are playable — clicking one
+queues all tracks to MPD with full metadata.
+
+### DSD Volume Protection — 6 Bug Fixes
+
+Fixed intermittent regression where volume snapped to 100% during non-DSD
+playback. Root causes: stale HQPlayer cache items triggering false DSD
+detection, race conditions corrupting saved volume state. 10 unit tests added.
+
+---
+
+## 0.9.1 — 2026-06-07
+
+**Focus: ARM/Debian (aarch64) portability + production hardening.**
+
+All entries previously labelled v1.0.0 / v1.1.0 / v1.2.0 have been folded back
+into 0.9.1 — that 1.x numbering was an error.
+
+### ARM64 as First-Class Target
+
+Audiogravity now installs and runs on aarch64 (Raspberry Pi 4 / Debian)
+alongside x86/DietPi. Backend, frontend, license server, and audio-software
+installs validated end-to-end on both architectures.
+
+- Deterministic dependencies: `requirements.lock` (68 packages, wheels verified
+  for x86_64 and aarch64, Python 3.13.5)
+- upmpdcli on ARM64: native build script for the libnpupnp → libupnpp →
+  upmpdcli chain, published as a checksum-verified `.deb` bundle
+- Roon per-arch URLs, download allowlist, complete uninstall support
+
+### HQPlayer Integration
+
+Discovery panel with manual IP entry for cross-subnet setups. Volume protection
+for DSD streams (DSD playback forces 100% hardware volume, restored on
+non-DSD). Auto-cleared stale track state after 30s stopped.
+
+### Qobuz OAuth2 Foundation
+
+Full OAuth2 flow replacing deprecated username/password login. Bundle credential
+extraction from the Qobuz web player JS, browser-based login, code-to-token
+exchange. Frontend connect/disconnect card in the Sources view.
+
+### Library Player — Fullscreen Music Browser
+
+Bottom-sheet overlay hosting six views: Browse, Search, Queue, Sources, Outputs,
+Now Playing. Artist → album → track drill-down for MPD, Roon, and Qobuz. Album
+card grid with infinite-scroll pagination (IntersectionObserver, 50 albums per
+page). Queue management (MPD: remove/clear; Roon: read-only).
+
+### Now Playing — Complete Playback Control
+
+Fullscreen panel driven by SSE: cover art, title, artist, album, format strip
+(sample rate, bitrate, codec, hi-res highlight), signal path, seekable progress
+bar, transport controls (prev/play/next/repeat/shuffle), volume slider. Dynamic
+background tint extracted via canvas color sampling. Horizontal swipe between
+active sources. Album detail popover with tracklist. Mini player bar with swipe
+gestures.
+
+### Audio Pipeline
+
+Interactive SVG graph: pan, zoom, minimap, draggable nodes with persisted
+positions. Live status on nodes (playback state, now-playing info). Output
+steering: click any link to switch a service's ALSA output on the fly. Roon zone
+display and transfer. Network connectivity view (WiFi signal quality). Mobile
+responsive layout.
+
+### License System
+
+- **Trial**: 30-day auto-activated, HMAC-signed with device fingerprint
+- **Lifetime**: single-device `.lic` file, Ed25519-signed, uploaded via UI
+- **License Server**: admin panel (orders, audit log, email templates, bulk ops,
+  device transfer), customer self-service portal, PayPal IPN automation, online
+  verification (24h refresh)
+- **Feature gating**: `require_full_license` dependency on premium endpoints;
+  `version_expired` handling for v1→v2 upgrades
+- **Self-service activation**: 3-step stepper (key → hostname → activate) with
+  `.lic` download
+
+### Passkeys — Face ID / Touch ID (WebAuthn / FIDO2)
+
+Passwordless authentication via discoverable credentials. One-time setup offer
+after password login. Burger menu toggle to register/remove passkeys. Backend:
+6 endpoints, replay-attack prevention via sign-count tracking.
+
+### Services & Profiles Management
+
+- **Services tab**: quick filter (All/Running/Stopped/Failed), global health
+  bar, inline metrics (CPU/Memory/Disk/NET), uptime display, restart button,
+  boot icon, detail modal with session history, dual-line sparklines
+- **Profiles tab**: health bar per tile, quick filter (All/Active/Idle), detail
+  modal, instant activation (async, SSE-driven status updates)
+
+### Audio Software Management
+
+Quick filter (All/Installed/Updates), restart-required badge, documentation
+links per package, per-arch support badges.
+
+### Configuration Editor
+
+Service status badges (Running/Stopped/Failed), diff preview before save,
+restart-after-save toggle, backup management. Generic JSON/INI/XML/Libconfig
+editor via CodeMirror.
+
+### Systemd Overrides
+
+RT presets (Audio Optimized / Reset to Defaults), OOM Score Adjust, CPU Weight,
+diff preview before save.
+
+### Performance Monitoring
+
+CPU governor management, throttle detection badge, latency and network stability
+tests with 10-result history, RT process monitor (SCHED_FIFO/RR detection).
+
+### System Administration
+
+Terminal (full interactive PTY shell in browser via WebSocket), backend restart,
+OS reboot (with password confirmation), role-based access (admin/user/guest).
+
+### Mobile & PWA
+
+- Touch-first gesture navigation: edge swipes for sidebar/panel, vertical
+  "molette" for fast tab cycling, gallery content swipe
+- View Transitions API between tabs (direction-aware)
+- GPU-accelerated gestures (will-change, RAF batching, passive listeners)
+- In-app splash screen, offline indicator, intelligent cache warming
+- iOS: safe-area insets, notch handling, rubber-band prevention, PWA splash
+  screens (40 device-specific tags)
+
+### Security
+
+- mTLS / PKI: optional nginx mutual TLS client certificate authentication
+- Guest role enforcement across all tabs and API endpoints
+- CSP hardening, hidden source maps
+- Security lock: blocks UI rendering without valid session
+
+### Performance & Architecture
+
+- Event-driven pipeline monitoring (inotify + D-Bus signals, replacing 2s
+  polling — CPU drops to near zero at idle)
+- Lazy loading, IntersectionObserver pause, Lit chunk splitting
+- Backend: `orjson` (5× JSON), `uvloop`, Pydantic v2 `__slots__`, unified
+  TTL cache, parallel pipeline construction
+- Frontend: `content-visibility: auto` on inactive tabs, concurrent queue
+  operations, MPD `command_list` batching, MPD `window` server-side limits
+- 3 themes: Slate, Minimal, Gravity
+
+### Codebase Quality
+
+- 54 Lit 3.0 Web Components (Atomic Design: atoms/molecules/organisms/pages)
+- Stylelint Phase 3: all CSS files lint-clean, Husky pre-commit hook
+- Unified TTL cache replacing 15 ad-hoc implementations
+- Dead code audit (frontend + backend), formatter consolidation
+- Full CSS custom properties architecture with design tokens
+
+---
+
+## 0.9.0 — 2026-03-06
+
+Full-stack rewrite. Frontend migrated from vanilla JS to **Lit 3.0 Web
+Components** (54 components, Light DOM, Storybook 10, Vite 7). Backend moved to
+**native D-Bus** (`dbus-fast`) with JWT authentication, adaptive monitoring
+(2s→30s intervals, 40-60% CPU reduction at idle), and 9 modular FastAPI
+services. Dual-layer security (API key + JWT RBAC), BCrypt hashing, role-based
+access (Admin/User/Guest). WCAG 2.1 Level AA accessibility.
