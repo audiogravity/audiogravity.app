@@ -160,8 +160,6 @@ curl -fsSL https://audiogravity.app/install-backend.sh | sudo bash -s -- \
 
 Last run: 2026-06-09 18:17 UTC · Full report: [TEST_REPORT.md](TEST_REPORT.md)
 
-Last run: 2026-06-09 18:17 UTC
-
 ## Documentation
 
 - [RELEASE_NOTES.md](RELEASE_NOTES.md) — synthesized release notes per version
