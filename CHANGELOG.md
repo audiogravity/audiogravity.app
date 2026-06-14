@@ -9,6 +9,8 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+## [0.9.3] - 2026-06-14
+
 ### Added
 - **[backend+frontend] Tidal streaming source** — connect a Tidal HiFi account
   (PKCE login) and browse Favorites / New Releases / Playlists, plus search;

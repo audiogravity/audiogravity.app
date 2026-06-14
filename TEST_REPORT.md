@@ -1,16 +1,16 @@
 # Audiogravity — Test Report
 
-Generated: **2026-06-09 16:55 UTC**
+Generated: **2026-06-14 14:33 UTC**
 
 ## Summary
 
 | | Tests | Passed | Failed | Skipped | Duration |
 |---|---:|---:|---:|---:|---:|
-| **backend** PASS | 158 | 158 | 0 | 0 | 14.8s |
-| **frontend** PASS | 65 | 65 | 0 | 0 | 0.1s |
-| **license-js** PASS | 9 | 9 | 0 | 0 | 0.0s |
-| **license-py** PASS | 21 | 21 | 0 | 0 | 0.5s |
-| **Total** PASS | **253** | **253** | **0** | **0** | **15.4s** |
+| **backend** PASS | 200 | 200 | 0 | 0 | 13.7s |
+| **frontend** PASS | 65 | 65 | 0 | 0 | 0.2s |
+| **license-js** PASS | 9 | 9 | 0 | 0 | 0.1s |
+| **license-py** PASS | 21 | 21 | 0 | 0 | 1.1s |
+| **Total** PASS | **295** | **295** | **0** | **0** | **15.1s** |
 
 ## Detail
 
@@ -18,12 +18,12 @@ Generated: **2026-06-09 16:55 UTC**
 
 **tests.test_app**
 
-  - [+] test_coreapp_uses_default_json_response_class (0.01s)
-  - [+] test_responses_serialize_to_json
+  - [+] test_coreapp_uses_default_json_response_class (0.03s)
+  - [+] test_responses_serialize_to_json (0.01s)
 
 **tests.test_audio_app_config.TestAudioAppConfig**
 
-  - [+] test_services_route (0.03s)
+  - [+] test_services_route (0.06s)
 
 **tests.test_audio_app_config.TestResolveConfigPath**
 
@@ -34,40 +34,51 @@ Generated: **2026-06-09 16:55 UTC**
 
 **tests.test_audio_app_config.TestPackageEventReload**
 
-  - [+] test_reload_on_package_events[package_state-True] (0.70s)
-  - [+] test_reload_on_package_events[packages_updated-True] (0.70s)
-  - [+] test_reload_on_package_events[some_other_event-False] (0.70s)
+  - [+] test_reload_on_package_events[package_state-True] (0.71s)
+  - [+] test_reload_on_package_events[packages_updated-True] (0.71s)
+  - [+] test_reload_on_package_events[some_other_event-False] (0.71s)
 
 **tests.test_audio_hw.TestAudioHw**
 
-  - [+] test_devices_route (0.01s)
+  - [+] test_devices_route (0.03s)
 
 **tests.test_audio_pipeline.TestAudioPipeline**
 
-  - [+] test_now_playing (0.01s)
-  - [+] test_control (0.01s)
+  - [+] test_now_playing (0.04s)
+  - [+] test_control (0.03s)
 
 **tests.test_audio_pipeline.TestCoverCache**
 
-  - [+] test_cover_returns_24h_cache (0.01s)
-  - [+] test_cover_404_no_store (0.02s)
+  - [+] test_cover_returns_24h_cache (0.03s)
+  - [+] test_cover_404_no_store (0.03s)
+
+**tests.test_audio_pipeline.TestAirplayNowPlaying**
+
+  - [+] test_variant_values_unwrapped
+  - [+] test_native_values_passthrough
 
 **tests.test_auth.TestLogin**
 
-  - [+] test_login_valid (0.50s)
-  - [+] test_login_wrong_password (0.40s)
-  - [+] test_login_unknown_user (0.41s)
+  - [+] test_login_valid (0.66s)
+  - [+] test_login_wrong_password (0.45s)
+  - [+] test_login_unknown_user (0.44s)
 
 **tests.test_auth.TestUsersCRUD**
 
-  - [+] test_list_users (0.04s)
-  - [+] test_create_and_delete_user (0.41s)
-  - [+] test_update_user_role (0.41s)
-  - [+] test_cannot_delete_self (0.02s)
+  - [+] test_list_users (0.05s)
+  - [+] test_create_and_delete_user (0.47s)
+  - [+] test_update_user_role (0.45s)
+  - [+] test_cannot_delete_self (0.04s)
 
 **tests.test_config_validation.TestConfigValidation**
 
-  - [+] test_post_validate (0.02s)
+  - [+] test_post_validate (0.06s)
+
+**tests.test_dbus_client.TestUnwrapVariant**
+
+  - [+] test_native_values_passthrough
+  - [+] test_single_wrap
+  - [+] test_nested_wrap
 
 **tests.test_dsd_volume.TestDsdDetection**
 
@@ -77,7 +88,7 @@ Generated: **2026-06-09 16:55 UTC**
 
 **tests.test_dsd_volume.TestDsdRestore**
 
-  - [+] test_dsd_ended_restores_volume (0.01s)
+  - [+] test_dsd_ended_restores_volume (0.03s)
   - [+] test_stopped_state_clears_dsd_active
   - [+] test_empty_items_clears_dsd_active
 
@@ -96,41 +107,41 @@ Generated: **2026-06-09 16:55 UTC**
 
 **tests.test_hqplayer.TestHQPlayer**
 
-  - [+] test_status (0.03s)
-  - [+] test_filters (0.03s)
-  - [+] test_shapers (0.03s)
-  - [+] test_modes (0.04s)
-  - [+] test_discover (0.10s)
+  - [+] test_status (0.08s)
+  - [+] test_filters (0.21s)
+  - [+] test_shapers (0.07s)
+  - [+] test_modes (0.07s)
+  - [+] test_discover (0.07s)
 
 **tests.test_library.TestLibrary**
 
-  - [+] test_upnp_known_servers_route_exists (0.07s)
-  - [+] test_search_route_exists (0.05s)
-  - [+] test_queue_route_exists (0.05s)
+  - [+] test_upnp_known_servers_route_exists (0.17s)
+  - [+] test_search_route_exists (0.19s)
+  - [+] test_queue_route_exists (0.17s)
 
 **tests.test_license.TestGetStatus**
 
   - [+] test_no_license (0.06s)
-  - [+] test_valid_lifetime_license (0.04s)
-  - [+] test_beta_version_accepts_v1_scope (0.05s)
+  - [+] test_valid_lifetime_license (0.06s)
+  - [+] test_beta_version_accepts_v1_scope (0.06s)
   - [+] test_version_expired (0.06s)
-  - [+] test_tampered_license (0.05s)
+  - [+] test_tampered_license (0.06s)
 
 **tests.test_license.TestUploadLicense**
 
-  - [+] test_upload_valid_lic (0.05s)
-  - [+] test_upload_invalid_signature (0.01s)
+  - [+] test_upload_valid_lic (0.07s)
+  - [+] test_upload_invalid_signature (0.03s)
 
 **tests.test_license.TestDeleteLicense**
 
-  - [+] test_delete_existing_license (0.09s)
-  - [+] test_delete_wrong_password (0.01s)
-  - [+] test_delete_no_license (0.01s)
-  - [+] test_no_name_error (0.09s)
+  - [+] test_delete_existing_license (0.07s)
+  - [+] test_delete_wrong_password (0.03s)
+  - [+] test_delete_no_license (0.03s)
+  - [+] test_no_name_error (0.06s)
 
 **tests.test_packages.TestPackages**
 
-  - [+] test_route_exists (0.02s)
+  - [+] test_route_exists (0.04s)
 
 **tests.test_packages.TestRoonArchUrl**
 
@@ -147,7 +158,7 @@ Generated: **2026-06-09 16:55 UTC**
 
 **tests.test_packages.TestScriptInstallerStdin**
 
-  - [+] test_install_feeds_affirmative_stdin
+  - [+] test_install_feeds_affirmative_stdin (0.05s)
 
 **tests.test_packages.TestRoonRegistryUninstall**
 
@@ -158,7 +169,7 @@ Generated: **2026-06-09 16:55 UTC**
 
 **tests.test_packages.TestOsResolverStandalone**
 
-  - [+] test_runs_standalone_without_package_context (7.71s)
+  - [+] test_runs_standalone_without_package_context (2.04s)
 
 **tests.test_packages.TestArchFallback**
 
@@ -180,7 +191,7 @@ Generated: **2026-06-09 16:55 UTC**
 
 **tests.test_packages.TestScriptInstallerUninstall**
 
-  - [+] test_runs_all_commands_in_order_continue_on_failure
+  - [+] test_runs_all_commands_in_order_continue_on_failure (0.01s)
   - [+] test_does_not_double_prefix_sudo
 
 **tests.test_packages.TestScriptInstallerDryRun**
@@ -195,8 +206,8 @@ Generated: **2026-06-09 16:55 UTC**
 
 **tests.test_performance.TestPerformance**
 
-  - [+] test_cpu_info_route (0.07s)
-  - [+] test_rt_processes (0.04s)
+  - [+] test_cpu_info_route (0.16s)
+  - [+] test_rt_processes (0.08s)
 
 **tests.test_performance.TestGovernorBootScript**
 
@@ -206,30 +217,30 @@ Generated: **2026-06-09 16:55 UTC**
 
 **tests.test_player.TestPlayer**
 
-  - [+] test_snapshot (0.02s)
-  - [+] test_control (0.01s)
-  - [+] test_sleep_timer_get (0.02s)
+  - [+] test_snapshot (0.04s)
+  - [+] test_control (0.05s)
+  - [+] test_sleep_timer_get (0.04s)
 
 **tests.test_profiles.TestActivateProfile**
 
-  - [+] test_activate (0.07s)
-  - [+] test_deactivate (0.02s)
+  - [+] test_activate (0.20s)
+  - [+] test_deactivate (0.05s)
 
 **tests.test_push.TestVapidKey**
 
-  - [+] test_get_key (0.01s)
+  - [+] test_get_key (0.02s)
 
 **tests.test_push.TestSubscribe**
 
-  - [+] test_subscribe
+  - [+] test_subscribe (0.02s)
 
 **tests.test_push.TestUnsubscribe**
 
-  - [+] test_unsubscribe
+  - [+] test_unsubscribe (0.02s)
 
 **tests.test_push.TestGenerateVapidKeysScript**
 
-  - [+] test_script_produces_valid_keys (0.09s)
+  - [+] test_script_produces_valid_keys (0.20s)
 
 **tests.test_push.TestRegisterLoadsVapidJson**
 
@@ -273,13 +284,13 @@ Generated: **2026-06-09 16:55 UTC**
 
 **tests.test_qobuz.TestQobuzRouter**
 
-  - [+] test_get_connection_connected (0.01s)
-  - [+] test_delete_connection
-  - [+] test_get_connection_after_disconnect
-  - [+] test_oauth_callback_no_code
-  - [+] test_oauth_callback_with_code
-  - [+] test_oauth_callback_failure
-  - [+] test_post_connection_starts_oauth
+  - [+] test_get_connection_connected (0.02s)
+  - [+] test_delete_connection (0.02s)
+  - [+] test_get_connection_after_disconnect (0.02s)
+  - [+] test_oauth_callback_no_code (0.03s)
+  - [+] test_oauth_callback_with_code (0.02s)
+  - [+] test_oauth_callback_failure (0.02s)
+  - [+] test_post_connection_starts_oauth (0.02s)
 
 **tests.test_qobuz_library.TestQobuzCover**
 
@@ -314,48 +325,115 @@ Generated: **2026-06-09 16:55 UTC**
 
 **tests.test_qobuz_library.TestQobuzLibraryRouter**
 
-  - [+] test_featured_albums (0.05s)
-  - [+] test_featured_albums_default_type (0.05s)
-  - [+] test_playlists (0.06s)
-  - [+] test_playlist_tracks (0.05s)
-  - [+] test_playlist_tracks_missing_id (0.05s)
-  - [+] test_featured_service_error (0.05s)
+  - [+] test_featured_albums (0.22s)
+  - [+] test_featured_albums_default_type (0.16s)
+  - [+] test_playlists (0.16s)
+  - [+] test_playlist_tracks (0.16s)
+  - [+] test_playlist_tracks_missing_id (0.20s)
+  - [+] test_featured_service_error (0.16s)
 
 **tests.test_radio.TestRadio**
 
-  - [+] test_search_route (0.04s)
-  - [+] test_library_route (0.04s)
-  - [+] test_favorites_route (0.03s)
+  - [+] test_search_route (0.09s)
+  - [+] test_library_route (0.07s)
+  - [+] test_favorites_route (0.07s)
 
 **tests.test_services.TestListServices**
 
-  - [+] test_list_all (0.04s)
+  - [+] test_list_all (0.12s)
 
 **tests.test_services.TestServiceInfo**
 
-  - [+] test_get_service (0.03s)
+  - [+] test_get_service (0.09s)
 
 **tests.test_services.TestServiceActions**
 
-  - [+] test_restart_service (0.03s)
-  - [+] test_stop_service (0.03s)
-  - [+] test_start_service (0.04s)
+  - [+] test_restart_service (0.09s)
+  - [+] test_stop_service (0.09s)
+  - [+] test_start_service (0.08s)
 
 **tests.test_steering.TestSteeringRoutes**
 
-  - [+] test_outputs_route_exists (0.03s)
-  - [+] test_status_route_exists (0.01s)
+  - [+] test_outputs_route_exists (0.04s)
+  - [+] test_status_route_exists (0.02s)
 
 **tests.test_sysinfo.TestMetrics**
 
-  - [+] test_metrics (0.04s)
+  - [+] test_metrics (0.11s)
 
 **tests.test_sysinfo.TestDetectCpuModel**
 
-  - [+] test_x86_uses_model_name
+  - [+] test_x86_uses_model_name (0.03s)
   - [+] test_arm_falls_back_to_lscpu
   - [+] test_unknown_when_nothing_found
   - [+] test_never_raises_on_error
+
+**tests.test_tidal.TestTidalServicePersistence**
+
+  - [+] test_loads_config_on_init
+  - [+] test_not_connected_when_no_config
+  - [+] test_disconnect_removes_file
+  - [+] test_save_config_roundtrip
+  - [+] test_corrupt_config_is_handled
+
+**tests.test_tidal.TestTidalPKCE**
+
+  - [+] test_start_pkce_builds_authorize_url
+  - [+] test_extract_code_from_redirect_url
+  - [+] test_extract_code_bare
+  - [+] test_extract_code_rejects_login_url
+  - [+] test_extract_code_empty
+  - [+] test_apply_token_sets_state
+  - [+] test_submit_without_pending_flow_fails
+
+**tests.test_tidal.TestTidalModels**
+
+  - [+] test_connection_defaults
+  - [+] test_oauth_start
+
+**tests.test_tidal.TestTidalRouter**
+
+  - [+] test_get_connection_connected (0.02s)
+  - [+] test_post_connection_starts_pkce (0.02s)
+  - [+] test_submit_connection (0.02s)
+  - [+] test_delete_connection (0.02s)
+
+**tests.test_tidal_library.TestTidalMapping**
+
+  - [+] test_cover_uuid_to_url
+  - [+] test_map_track
+  - [+] test_map_album
+  - [+] test_search_maps_all_kinds
+
+**tests.test_tidal_library.TestTidalQueue**
+
+  - [+] test_single_track_builds_proxy_url_and_registers_meta
+
+**tests.test_tidal_library.TestExtStreamKey**
+
+  - [+] test_tidal_proxy_url_keys_on_track_id
+
+**tests.test_tidal_library.TestTidalStreamProxy**
+
+  - [+] test_fetch_manifest_none_when_not_connected
+  - [+] test_stream_track_remuxes_to_seekable_file_and_caches
+  - [+] test_stream_track_discards_incomplete_on_ffmpeg_failure
+  - [+] test_cache_keeps_only_most_recent
+  - [+] test_cache_rejects_bad_track_id
+  - [+] test_stream_serves_cached_file_with_range (0.05s)
+
+**tests.test_tidal_library.TestTidalDiscovery**
+
+  - [+] test_featured_extracts_album_lists_deduped
+  - [+] test_featured_no_pagination
+  - [+] test_charts_keeps_only_chart_modules
+  - [+] test_editorial_excludes_charts_and_albums
+  - [+] test_editorial_no_pagination
+
+**tests.test_tidal_library.TestTidalFavoritesPlaylists**
+
+  - [+] test_favorites_albums_unwraps_item_wrapper
+  - [+] test_playlists_maps_uuid_to_album
 
 ### frontend
 
@@ -363,7 +441,7 @@ Generated: **2026-06-09 16:55 UTC**
 
   - [+] Auth state checkers > isAuthenticated > returns false when not authenticated
   - [+] Auth state checkers > isAuthenticated > returns true when authenticated with valid token
-  - [+] Auth state checkers > isAuthenticated > returns false when token is expired (0.02s)
+  - [+] Auth state checkers > isAuthenticated > returns false when token is expired (0.04s)
   - [+] Auth state checkers > isAuthenticated > returns false when no token
   - [+] Auth state checkers > getCurrentUser > returns null when not authenticated
   - [+] Auth state checkers > getCurrentUser > returns user when authenticated
@@ -378,7 +456,7 @@ Generated: **2026-06-09 16:55 UTC**
 
 **js/library-api.test.js**
 
-  - [+] queueItem > routes to /library/queue by default
+  - [+] queueItem > routes to /library/queue by default (0.02s)
   - [+] queueItem > routes to /hqplayer/play-library when hqplayer_output is true
   - [+] upnpPlay > routes to /library/upnp-play by default
   - [+] upnpPlay > routes to /hqplayer/play when hqplayer_output is true
@@ -445,7 +523,7 @@ Generated: **2026-06-09 16:55 UTC**
 
   - [+] fmtDate > returns "—" for null
   - [+] fmtDate > returns "—" for empty string
-  - [+] fmtDate > formats a valid ISO date (0.02s)
+  - [+] fmtDate > formats a valid ISO date (0.05s)
   - [+] shortId > returns "—" for null
   - [+] shortId > truncates a long ID
   - [+] shortId > handles short ID
@@ -457,16 +535,16 @@ Generated: **2026-06-09 16:55 UTC**
 
 **tests.test_admin.TestListOrders**
 
-  - [+] test_list_orders (0.24s)
-  - [+] test_list_orders_no_auth
+  - [+] test_list_orders (0.59s)
+  - [+] test_list_orders_no_auth (0.01s)
 
 **tests.test_admin.TestStats**
 
-  - [+] test_stats
+  - [+] test_stats (0.01s)
 
 **tests.test_admin.TestCreateOrder**
 
-  - [+] test_create (0.01s)
+  - [+] test_create (0.02s)
 
 **tests.test_admin.TestDevicePings**
 
@@ -474,37 +552,37 @@ Generated: **2026-06-09 16:55 UTC**
 
 **tests.test_admin.TestAuditLog**
 
-  - [+] test_list_audit
+  - [+] test_list_audit (0.02s)
 
 **tests.test_portal.TestPubConfig**
 
-  - [+] test_returns_config
+  - [+] test_returns_config (0.02s)
 
 **tests.test_portal.TestCheck**
 
-  - [+] test_check_invalid_key
-  - [+] test_check_empty_key
+  - [+] test_check_invalid_key (0.02s)
+  - [+] test_check_empty_key (0.01s)
 
 **tests.test_portal.TestVerify**
 
-  - [+] test_verify_invalid_lic (0.01s)
-  - [+] test_verify_with_ag_version
-  - [+] test_verify_without_verify_key
+  - [+] test_verify_invalid_lic (0.02s)
+  - [+] test_verify_with_ag_version (0.01s)
+  - [+] test_verify_without_verify_key (0.01s)
 
 **tests.test_portal.TestActivate**
 
-  - [+] test_activate_invalid_key (0.01s)
+  - [+] test_activate_invalid_key (0.02s)
 
 **tests.test_webhook.TestPayPalWebhookReceive**
 
-  - [+] test_ipn_returns_200
-  - [+] test_ipn_empty_body
+  - [+] test_ipn_returns_200 (0.02s)
+  - [+] test_ipn_empty_body (0.01s)
 
 **tests.test_webhook.TestPayPalWebhookProcessing**
 
-  - [+] test_verified_completed_creates_order (0.01s)
-  - [+] test_invalid_pingback_creates_no_order (0.01s)
-  - [+] test_non_completed_status_ignored
-  - [+] test_receiver_email_mismatch_ignored
-  - [+] test_idempotent_duplicate_txn (0.02s)
-  - [+] test_upgrade_price_sets_v2_scope (0.02s)
+  - [+] test_verified_completed_creates_order (0.03s)
+  - [+] test_invalid_pingback_creates_no_order (0.02s)
+  - [+] test_non_completed_status_ignored (0.02s)
+  - [+] test_receiver_email_mismatch_ignored (0.02s)
+  - [+] test_idempotent_duplicate_txn (0.04s)
+  - [+] test_upgrade_price_sets_v2_scope (0.03s)

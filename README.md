@@ -12,10 +12,10 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-0.9.2_beta-blue" alt="Version" />
+  <img src="https://img.shields.io/badge/version-0.9.3_beta-blue" alt="Version" />
   <img src="https://img.shields.io/badge/platform-DietPi_x86__64_%7C_aarch64-green" alt="Platform" />
   <img src="https://img.shields.io/badge/license-proprietary-lightgrey" alt="License" />
-  <img src="https://img.shields.io/badge/tests-253_passing-brightgreen" alt="Tests" />
+  <img src="https://img.shields.io/badge/tests-295_passing-brightgreen" alt="Tests" />
 </p>
 
 ---
@@ -39,8 +39,9 @@
     <td width="50%">
 
 **Library & Radio**
-- High-resolution browsing — Roon, MPD, MinimServer, Qobuz
+- High-resolution browsing — Roon, MPD, MinimServer, Qobuz, Tidal
 - Qobuz Hi-Res streaming up to 24-bit / 192 kHz — favourites, new releases, editorial playlists
+- Tidal HiFi streaming — lossless FLAC, Favorites, New Releases, Charts, Editorial playlists, in-track seek
 - Internet radio — Radio Browser, custom stations, favourites
 - UPnP server auto-discovery & browsing
 
@@ -152,13 +153,15 @@ curl -fsSL https://audiogravity.app/install-backend.sh | sudo bash -s -- \
 
 | Suite | Tests | Status |
 |-------|------:|--------|
-| Backend (Python) | 193 | ✅ |
+| Backend (Python) | 200 | ✅ |
 | License Server (Python) | 21 | ✅ |
 | License Server (JS) | 9 | ✅ |
 | Frontend (JS) | 65 | ✅ |
-| **Total** | **288** | ✅ |
+| **Total** | **295** | ✅ |
 
-Last run: 2026-06-14 06:18 UTC
+Last run: 2026-06-14 14:33 UTC
+
+See [TEST_REPORT.md](TEST_REPORT.md) for the full per-test breakdown.
 
 ## Documentation
 

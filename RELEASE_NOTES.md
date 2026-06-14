@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.3 — 2026-06-14
+
 ### Tidal HiFi Streaming
 
 Tidal joins Qobuz as a streaming source. Connect a Tidal HiFi account via PKCE
