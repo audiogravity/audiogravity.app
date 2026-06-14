@@ -53,6 +53,12 @@ The version label now reads `v0.9.2` (lowercase prefix, no space).
 - **Fullscreen player volume swipe** — adjusting the volume slider no longer triggers
   the player's multi-source switch swipe; the volume popover now isolates its own touch
   gestures.
+- **Library horizontal scroll vs tab switch** — scrolling a horizontal row (browse pills,
+  album shelves) no longer flips to the next tab; the swipe-to-switch handler now defers
+  to any horizontally-scrollable element under the finger.
+- **Fullscreen player pull-down vs scroll** — in a long tracklist, swiping down to scroll
+  back up no longer closes the player; pull-to-dismiss only engages when the content is
+  already scrolled to the top.
 
 ---
 

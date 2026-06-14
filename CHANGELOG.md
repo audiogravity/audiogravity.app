@@ -38,6 +38,12 @@ and this landing) are documented here. Format based on
   now unwrapped (portable, no-op on x86).
 - **[frontend] Fullscreen player volume swipe** — adjusting the volume slider no longer
   triggers the player's multi-source swipe.
+- **[frontend] Library horizontal scroll** — scrolling a horizontal row (pills, album
+  shelves) no longer switches tabs; the swipe-to-switch handler now yields to any
+  horizontally-scrollable ancestor (CSS class or inline overflow), not just inline ones.
+- **[frontend] Fullscreen player pull-down dismiss** — swiping down to scroll back up in
+  a long tracklist no longer dismisses the player; the dismiss gesture only fires when
+  the scroll area is already at the top.
 
 ### Removed
 - **[frontend] Obsolete top-bar buttons** — the documentation (audiogravity.app)
