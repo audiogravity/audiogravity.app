@@ -1,16 +1,16 @@
 # Audiogravity — Test Report
 
-Generated: **2026-06-15 16:20 UTC**
+Generated: **2026-06-15 21:13 UTC**
 
 ## Summary
 
 | | Tests | Passed | Failed | Skipped | Duration |
 |---|---:|---:|---:|---:|---:|
-| **backend** PASS | 202 | 202 | 0 | 0 | 12.9s |
-| **frontend** PASS | 69 | 69 | 0 | 0 | 0.2s |
+| **backend** PASS | 202 | 202 | 0 | 0 | 13.1s |
+| **frontend** PASS | 69 | 69 | 0 | 0 | 0.3s |
 | **license-js** PASS | 9 | 9 | 0 | 0 | 0.1s |
 | **license-py** PASS | 21 | 21 | 0 | 0 | 1.1s |
-| **Total** PASS | **301** | **301** | **0** | **0** | **14.3s** |
+| **Total** PASS | **301** | **301** | **0** | **0** | **14.5s** |
 
 ## Detail
 
@@ -44,12 +44,12 @@ Generated: **2026-06-15 16:20 UTC**
 
 **tests.test_audio_pipeline.TestAudioPipeline**
 
-  - [+] test_now_playing (0.04s)
-  - [+] test_control (0.03s)
+  - [+] test_now_playing (0.06s)
+  - [+] test_control (0.04s)
 
 **tests.test_audio_pipeline.TestCoverCache**
 
-  - [+] test_cover_returns_24h_cache (0.03s)
+  - [+] test_cover_returns_24h_cache (0.04s)
   - [+] test_cover_404_no_store (0.03s)
 
 **tests.test_audio_pipeline.TestAirplayNowPlaying**
@@ -59,14 +59,14 @@ Generated: **2026-06-15 16:20 UTC**
 
 **tests.test_auth.TestLogin**
 
-  - [+] test_login_valid (0.68s)
-  - [+] test_login_wrong_password (0.45s)
-  - [+] test_login_unknown_user (0.43s)
+  - [+] test_login_valid (0.71s)
+  - [+] test_login_wrong_password (0.43s)
+  - [+] test_login_unknown_user (0.44s)
 
 **tests.test_auth.TestUsersCRUD**
 
-  - [+] test_list_users (0.04s)
-  - [+] test_create_and_delete_user (0.46s)
+  - [+] test_list_users (0.05s)
+  - [+] test_create_and_delete_user (0.45s)
   - [+] test_update_user_role (0.45s)
   - [+] test_cannot_delete_self (0.04s)
 
@@ -108,24 +108,24 @@ Generated: **2026-06-15 16:20 UTC**
 **tests.test_hqplayer.TestHQPlayer**
 
   - [+] test_status (0.08s)
-  - [+] test_filters (0.22s)
+  - [+] test_filters (0.21s)
   - [+] test_shapers (0.07s)
   - [+] test_modes (0.07s)
   - [+] test_discover (0.07s)
 
 **tests.test_library.TestLibrary**
 
-  - [+] test_upnp_known_servers_route_exists (0.22s)
-  - [+] test_search_route_exists (0.19s)
-  - [+] test_queue_route_exists (0.16s)
+  - [+] test_upnp_known_servers_route_exists (0.16s)
+  - [+] test_search_route_exists (0.21s)
+  - [+] test_queue_route_exists (0.15s)
 
 **tests.test_license.TestGetStatus**
 
-  - [+] test_no_license (0.06s)
-  - [+] test_valid_lifetime_license (0.06s)
+  - [+] test_no_license (0.07s)
+  - [+] test_valid_lifetime_license (0.07s)
   - [+] test_beta_version_accepts_v1_scope (0.06s)
   - [+] test_version_expired (0.06s)
-  - [+] test_tampered_license (0.06s)
+  - [+] test_tampered_license (0.05s)
 
 **tests.test_license.TestUploadLicense**
 
@@ -141,7 +141,7 @@ Generated: **2026-06-15 16:20 UTC**
 
 **tests.test_packages.TestPackages**
 
-  - [+] test_route_exists (0.05s)
+  - [+] test_route_exists (0.04s)
 
 **tests.test_packages.TestRoonArchUrl**
 
@@ -169,7 +169,7 @@ Generated: **2026-06-15 16:20 UTC**
 
 **tests.test_packages.TestOsResolverStandalone**
 
-  - [+] test_runs_standalone_without_package_context (1.21s)
+  - [+] test_runs_standalone_without_package_context (1.52s)
 
 **tests.test_packages.TestArchFallback**
 
@@ -185,14 +185,14 @@ Generated: **2026-06-15 16:20 UTC**
 
   - [+] test_parse_sha256sums
   - [+] test_sha256_file
-  - [+] test_valid_checksum_installs
-  - [+] test_mismatch_aborts
-  - [+] test_missing_entry_aborts
+  - [+] test_valid_checksum_installs (0.01s)
+  - [+] test_mismatch_aborts (0.01s)
+  - [+] test_missing_entry_aborts (0.01s)
 
 **tests.test_packages.TestScriptInstallerUninstall**
 
-  - [+] test_runs_all_commands_in_order_continue_on_failure (0.01s)
-  - [+] test_does_not_double_prefix_sudo
+  - [+] test_runs_all_commands_in_order_continue_on_failure (0.02s)
+  - [+] test_does_not_double_prefix_sudo (0.01s)
 
 **tests.test_packages.TestScriptInstallerDryRun**
 
@@ -206,8 +206,8 @@ Generated: **2026-06-15 16:20 UTC**
 
 **tests.test_performance.TestPerformance**
 
-  - [+] test_cpu_info_route (0.15s)
-  - [+] test_rt_processes (0.08s)
+  - [+] test_cpu_info_route (0.14s)
+  - [+] test_rt_processes (0.07s)
 
 **tests.test_performance.TestGovernorBootScript**
 
@@ -223,7 +223,7 @@ Generated: **2026-06-15 16:20 UTC**
 
 **tests.test_profiles.TestActivateProfile**
 
-  - [+] test_activate (0.17s)
+  - [+] test_activate (0.18s)
   - [+] test_deactivate (0.05s)
 
 **tests.test_push.TestVapidKey**
@@ -240,7 +240,7 @@ Generated: **2026-06-15 16:20 UTC**
 
 **tests.test_push.TestGenerateVapidKeysScript**
 
-  - [+] test_script_produces_valid_keys (0.20s)
+  - [+] test_script_produces_valid_keys (0.25s)
 
 **tests.test_push.TestRegisterLoadsVapidJson**
 
@@ -284,10 +284,10 @@ Generated: **2026-06-15 16:20 UTC**
 
 **tests.test_qobuz.TestQobuzRouter**
 
-  - [+] test_get_connection_connected (0.03s)
+  - [+] test_get_connection_connected (0.02s)
   - [+] test_delete_connection (0.02s)
-  - [+] test_get_connection_after_disconnect (0.03s)
-  - [+] test_oauth_callback_no_code (0.03s)
+  - [+] test_get_connection_after_disconnect (0.02s)
+  - [+] test_oauth_callback_no_code (0.02s)
   - [+] test_oauth_callback_with_code (0.02s)
   - [+] test_oauth_callback_failure (0.02s)
   - [+] test_post_connection_starts_oauth (0.02s)
@@ -327,39 +327,39 @@ Generated: **2026-06-15 16:20 UTC**
 
   - [+] test_featured_albums (0.17s)
   - [+] test_featured_albums_default_type (0.16s)
-  - [+] test_playlists (0.17s)
-  - [+] test_playlist_tracks (0.28s)
-  - [+] test_playlist_tracks_missing_id (0.24s)
+  - [+] test_playlists (0.16s)
+  - [+] test_playlist_tracks (0.16s)
+  - [+] test_playlist_tracks_missing_id (0.22s)
   - [+] test_featured_service_error (0.15s)
 
 **tests.test_radio.TestRadio**
 
   - [+] test_search_route (0.09s)
-  - [+] test_library_route (0.07s)
-  - [+] test_favorites_route (0.06s)
+  - [+] test_library_route (0.06s)
+  - [+] test_favorites_route (0.09s)
 
 **tests.test_services.TestListServices**
 
-  - [+] test_list_all (0.12s)
+  - [+] test_list_all (0.13s)
 
 **tests.test_services.TestServiceInfo**
 
-  - [+] test_get_service (0.08s)
+  - [+] test_get_service (0.09s)
 
 **tests.test_services.TestServiceActions**
 
   - [+] test_restart_service (0.08s)
-  - [+] test_stop_service (0.09s)
-  - [+] test_start_service (0.09s)
+  - [+] test_stop_service (0.08s)
+  - [+] test_start_service (0.08s)
 
 **tests.test_steering.TestSteeringRoutes**
 
   - [+] test_outputs_route_exists (0.04s)
-  - [+] test_status_route_exists (0.03s)
+  - [+] test_status_route_exists (0.02s)
 
 **tests.test_sysinfo.TestMetrics**
 
-  - [+] test_metrics (0.13s)
+  - [+] test_metrics (0.11s)
 
 **tests.test_sysinfo.TestDetectCpuModel**
 
@@ -393,8 +393,8 @@ Generated: **2026-06-15 16:20 UTC**
 
 **tests.test_tidal.TestTidalRouter**
 
-  - [+] test_get_connection_connected (0.02s)
-  - [+] test_post_connection_starts_pkce (0.02s)
+  - [+] test_get_connection_connected (0.03s)
+  - [+] test_post_connection_starts_pkce (0.03s)
   - [+] test_submit_connection (0.03s)
   - [+] test_delete_connection (0.02s)
 
@@ -444,7 +444,7 @@ Generated: **2026-06-15 16:20 UTC**
 
 **js/auth.test.js**
 
-  - [+] Auth state checkers > isAuthenticated > returns false when not authenticated
+  - [+] Auth state checkers > isAuthenticated > returns false when not authenticated (0.01s)
   - [+] Auth state checkers > isAuthenticated > returns true when authenticated with valid token
   - [+] Auth state checkers > isAuthenticated > returns false when token is expired (0.04s)
   - [+] Auth state checkers > isAuthenticated > returns false when no token
@@ -560,7 +560,7 @@ Generated: **2026-06-15 16:20 UTC**
 
 **tests.test_admin.TestDevicePings**
 
-  - [+] test_list_pings (0.02s)
+  - [+] test_list_pings (0.01s)
 
 **tests.test_admin.TestAuditLog**
 
@@ -572,7 +572,7 @@ Generated: **2026-06-15 16:20 UTC**
 
 **tests.test_portal.TestCheck**
 
-  - [+] test_check_invalid_key (0.01s)
+  - [+] test_check_invalid_key (0.02s)
   - [+] test_check_empty_key (0.01s)
 
 **tests.test_portal.TestVerify**
@@ -588,13 +588,13 @@ Generated: **2026-06-15 16:20 UTC**
 **tests.test_webhook.TestPayPalWebhookReceive**
 
   - [+] test_ipn_returns_200 (0.02s)
-  - [+] test_ipn_empty_body (0.01s)
+  - [+] test_ipn_empty_body (0.02s)
 
 **tests.test_webhook.TestPayPalWebhookProcessing**
 
-  - [+] test_verified_completed_creates_order (0.03s)
+  - [+] test_verified_completed_creates_order (0.04s)
   - [+] test_invalid_pingback_creates_no_order (0.02s)
   - [+] test_non_completed_status_ignored (0.02s)
   - [+] test_receiver_email_mismatch_ignored (0.02s)
-  - [+] test_idempotent_duplicate_txn (0.03s)
+  - [+] test_idempotent_duplicate_txn (0.04s)
   - [+] test_upgrade_price_sets_v2_scope (0.03s)
