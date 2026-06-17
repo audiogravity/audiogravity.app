@@ -1,16 +1,16 @@
 # Audiogravity — Test Report
 
-Generated: **2026-06-15 21:13 UTC**
+Generated: **2026-06-17 03:19 UTC**
 
 ## Summary
 
 | | Tests | Passed | Failed | Skipped | Duration |
 |---|---:|---:|---:|---:|---:|
-| **backend** PASS | 202 | 202 | 0 | 0 | 13.1s |
-| **frontend** PASS | 69 | 69 | 0 | 0 | 0.3s |
+| **backend** PASS | 218 | 218 | 0 | 0 | 13.0s |
+| **frontend** PASS | 74 | 74 | 0 | 0 | 0.3s |
 | **license-js** PASS | 9 | 9 | 0 | 0 | 0.1s |
 | **license-py** PASS | 21 | 21 | 0 | 0 | 1.1s |
-| **Total** PASS | **301** | **301** | **0** | **0** | **14.5s** |
+| **Total** PASS | **322** | **322** | **0** | **0** | **14.5s** |
 
 ## Detail
 
@@ -27,7 +27,7 @@ Generated: **2026-06-15 21:13 UTC**
 
 **tests.test_audio_app_config.TestResolveConfigPath**
 
-  - [+] test_declared_path_kept_when_it_exists
+  - [+] test_declared_path_kept_when_it_exists (0.01s)
   - [+] test_falls_back_when_declared_missing
   - [+] test_unchanged_when_nothing_found
   - [+] test_empty_path_passthrough
@@ -35,21 +35,21 @@ Generated: **2026-06-15 21:13 UTC**
 **tests.test_audio_app_config.TestPackageEventReload**
 
   - [+] test_reload_on_package_events[package_state-True] (0.71s)
-  - [+] test_reload_on_package_events[packages_updated-True] (0.71s)
+  - [+] test_reload_on_package_events[packages_updated-True] (0.70s)
   - [+] test_reload_on_package_events[some_other_event-False] (0.71s)
 
 **tests.test_audio_hw.TestAudioHw**
 
-  - [+] test_devices_route (0.03s)
+  - [+] test_devices_route (0.04s)
 
 **tests.test_audio_pipeline.TestAudioPipeline**
 
-  - [+] test_now_playing (0.06s)
+  - [+] test_now_playing (0.03s)
   - [+] test_control (0.04s)
 
 **tests.test_audio_pipeline.TestCoverCache**
 
-  - [+] test_cover_returns_24h_cache (0.04s)
+  - [+] test_cover_returns_24h_cache (0.03s)
   - [+] test_cover_404_no_store (0.03s)
 
 **tests.test_audio_pipeline.TestAirplayNowPlaying**
@@ -59,14 +59,14 @@ Generated: **2026-06-15 21:13 UTC**
 
 **tests.test_auth.TestLogin**
 
-  - [+] test_login_valid (0.71s)
+  - [+] test_login_valid (0.79s)
   - [+] test_login_wrong_password (0.43s)
-  - [+] test_login_unknown_user (0.44s)
+  - [+] test_login_unknown_user (0.43s)
 
 **tests.test_auth.TestUsersCRUD**
 
-  - [+] test_list_users (0.05s)
-  - [+] test_create_and_delete_user (0.45s)
+  - [+] test_list_users (0.04s)
+  - [+] test_create_and_delete_user (0.46s)
   - [+] test_update_user_role (0.45s)
   - [+] test_cannot_delete_self (0.04s)
 
@@ -107,25 +107,25 @@ Generated: **2026-06-15 21:13 UTC**
 
 **tests.test_hqplayer.TestHQPlayer**
 
-  - [+] test_status (0.08s)
-  - [+] test_filters (0.21s)
+  - [+] test_status (0.07s)
+  - [+] test_filters (0.22s)
   - [+] test_shapers (0.07s)
   - [+] test_modes (0.07s)
   - [+] test_discover (0.07s)
 
 **tests.test_library.TestLibrary**
 
-  - [+] test_upnp_known_servers_route_exists (0.16s)
-  - [+] test_search_route_exists (0.21s)
-  - [+] test_queue_route_exists (0.15s)
+  - [+] test_upnp_known_servers_route_exists (0.17s)
+  - [+] test_search_route_exists (0.19s)
+  - [+] test_queue_route_exists (0.16s)
 
 **tests.test_license.TestGetStatus**
 
-  - [+] test_no_license (0.07s)
+  - [+] test_no_license (0.06s)
   - [+] test_valid_lifetime_license (0.07s)
-  - [+] test_beta_version_accepts_v1_scope (0.06s)
+  - [+] test_beta_version_accepts_v1_scope (0.07s)
   - [+] test_version_expired (0.06s)
-  - [+] test_tampered_license (0.05s)
+  - [+] test_tampered_license (0.06s)
 
 **tests.test_license.TestUploadLicense**
 
@@ -134,14 +134,36 @@ Generated: **2026-06-15 21:13 UTC**
 
 **tests.test_license.TestDeleteLicense**
 
-  - [+] test_delete_existing_license (0.06s)
+  - [+] test_delete_existing_license (0.09s)
   - [+] test_delete_wrong_password (0.03s)
   - [+] test_delete_no_license (0.03s)
-  - [+] test_no_name_error (0.07s)
+  - [+] test_no_name_error (0.06s)
+
+**tests.test_now_playing.TestResolveOrigin**
+
+  - [+] test_tidal_proxy_url
+  - [+] test_qobuz_eid_url
+  - [+] test_local_file
+  - [+] test_empty_file_is_library
+  - [+] test_http_stream_is_upnp_by_default
+  - [+] test_http_stream_flagged_radio
+  - [+] test_radio_wins_over_url_markers
+  - [+] test_upnp_resolves_registered_server_name
+  - [+] test_roon_protocol
+  - [+] test_mpris_airplay
+  - [+] test_mpris_spotify
+  - [+] test_mpris_generic
+  - [+] test_unknown_protocol
+
+**tests.test_now_playing.TestUpnpServerRegistry**
+
+  - [+] test_register_and_get
+  - [+] test_missing_returns_none
+  - [+] test_empty_inputs_ignored
 
 **tests.test_packages.TestPackages**
 
-  - [+] test_route_exists (0.04s)
+  - [+] test_route_exists (0.07s)
 
 **tests.test_packages.TestRoonArchUrl**
 
@@ -158,7 +180,7 @@ Generated: **2026-06-15 21:13 UTC**
 
 **tests.test_packages.TestScriptInstallerStdin**
 
-  - [+] test_install_feeds_affirmative_stdin (0.04s)
+  - [+] test_install_feeds_affirmative_stdin (0.01s)
 
 **tests.test_packages.TestRoonRegistryUninstall**
 
@@ -169,7 +191,7 @@ Generated: **2026-06-15 21:13 UTC**
 
 **tests.test_packages.TestOsResolverStandalone**
 
-  - [+] test_runs_standalone_without_package_context (1.52s)
+  - [+] test_runs_standalone_without_package_context (1.37s)
 
 **tests.test_packages.TestArchFallback**
 
@@ -179,20 +201,20 @@ Generated: **2026-06-15 21:13 UTC**
 
 **tests.test_packages.TestAptDebBundle**
 
-  - [+] test_bundle_downloads_all_and_single_apt_install (0.01s)
+  - [+] test_bundle_downloads_all_and_single_apt_install
 
 **tests.test_packages.TestAptDebChecksum**
 
   - [+] test_parse_sha256sums
   - [+] test_sha256_file
   - [+] test_valid_checksum_installs (0.01s)
-  - [+] test_mismatch_aborts (0.01s)
-  - [+] test_missing_entry_aborts (0.01s)
+  - [+] test_mismatch_aborts
+  - [+] test_missing_entry_aborts
 
 **tests.test_packages.TestScriptInstallerUninstall**
 
-  - [+] test_runs_all_commands_in_order_continue_on_failure (0.02s)
-  - [+] test_does_not_double_prefix_sudo (0.01s)
+  - [+] test_runs_all_commands_in_order_continue_on_failure (0.01s)
+  - [+] test_does_not_double_prefix_sudo
 
 **tests.test_packages.TestScriptInstallerDryRun**
 
@@ -206,7 +228,7 @@ Generated: **2026-06-15 21:13 UTC**
 
 **tests.test_performance.TestPerformance**
 
-  - [+] test_cpu_info_route (0.14s)
+  - [+] test_cpu_info_route (0.15s)
   - [+] test_rt_processes (0.07s)
 
 **tests.test_performance.TestGovernorBootScript**
@@ -217,13 +239,13 @@ Generated: **2026-06-15 21:13 UTC**
 
 **tests.test_player.TestPlayer**
 
-  - [+] test_snapshot (0.04s)
+  - [+] test_snapshot (0.03s)
   - [+] test_control (0.05s)
   - [+] test_sleep_timer_get (0.03s)
 
 **tests.test_profiles.TestActivateProfile**
 
-  - [+] test_activate (0.18s)
+  - [+] test_activate (0.16s)
   - [+] test_deactivate (0.05s)
 
 **tests.test_push.TestVapidKey**
@@ -240,7 +262,7 @@ Generated: **2026-06-15 21:13 UTC**
 
 **tests.test_push.TestGenerateVapidKeysScript**
 
-  - [+] test_script_produces_valid_keys (0.25s)
+  - [+] test_script_produces_valid_keys (0.20s)
 
 **tests.test_push.TestRegisterLoadsVapidJson**
 
@@ -325,22 +347,22 @@ Generated: **2026-06-15 21:13 UTC**
 
 **tests.test_qobuz_library.TestQobuzLibraryRouter**
 
-  - [+] test_featured_albums (0.17s)
+  - [+] test_featured_albums (0.18s)
   - [+] test_featured_albums_default_type (0.16s)
   - [+] test_playlists (0.16s)
-  - [+] test_playlist_tracks (0.16s)
-  - [+] test_playlist_tracks_missing_id (0.22s)
-  - [+] test_featured_service_error (0.15s)
+  - [+] test_playlist_tracks (0.18s)
+  - [+] test_playlist_tracks_missing_id (0.16s)
+  - [+] test_featured_service_error (0.16s)
 
 **tests.test_radio.TestRadio**
 
   - [+] test_search_route (0.09s)
-  - [+] test_library_route (0.06s)
-  - [+] test_favorites_route (0.09s)
+  - [+] test_library_route (0.07s)
+  - [+] test_favorites_route (0.07s)
 
 **tests.test_services.TestListServices**
 
-  - [+] test_list_all (0.13s)
+  - [+] test_list_all (0.12s)
 
 **tests.test_services.TestServiceInfo**
 
@@ -350,7 +372,7 @@ Generated: **2026-06-15 21:13 UTC**
 
   - [+] test_restart_service (0.08s)
   - [+] test_stop_service (0.08s)
-  - [+] test_start_service (0.08s)
+  - [+] test_start_service (0.09s)
 
 **tests.test_steering.TestSteeringRoutes**
 
@@ -359,11 +381,11 @@ Generated: **2026-06-15 21:13 UTC**
 
 **tests.test_sysinfo.TestMetrics**
 
-  - [+] test_metrics (0.11s)
+  - [+] test_metrics (0.13s)
 
 **tests.test_sysinfo.TestDetectCpuModel**
 
-  - [+] test_x86_uses_model_name (0.03s)
+  - [+] test_x86_uses_model_name
   - [+] test_arm_falls_back_to_lscpu
   - [+] test_unknown_when_nothing_found
   - [+] test_never_raises_on_error
@@ -393,9 +415,9 @@ Generated: **2026-06-15 21:13 UTC**
 
 **tests.test_tidal.TestTidalRouter**
 
-  - [+] test_get_connection_connected (0.03s)
-  - [+] test_post_connection_starts_pkce (0.03s)
-  - [+] test_submit_connection (0.03s)
+  - [+] test_get_connection_connected (0.02s)
+  - [+] test_post_connection_starts_pkce (0.02s)
+  - [+] test_submit_connection (0.02s)
   - [+] test_delete_connection (0.02s)
 
 **tests.test_tidal_library.TestTidalMapping**
@@ -444,7 +466,7 @@ Generated: **2026-06-15 21:13 UTC**
 
 **js/auth.test.js**
 
-  - [+] Auth state checkers > isAuthenticated > returns false when not authenticated (0.01s)
+  - [+] Auth state checkers > isAuthenticated > returns false when not authenticated
   - [+] Auth state checkers > isAuthenticated > returns true when authenticated with valid token
   - [+] Auth state checkers > isAuthenticated > returns false when token is expired (0.04s)
   - [+] Auth state checkers > isAuthenticated > returns false when no token
@@ -499,6 +521,14 @@ Generated: **2026-06-15 21:13 UTC**
   - [+] version propagation (single source: /VERSION) > config.js FRONTEND_VERSION matches /VERSION (UI display)
   - [+] version propagation (single source: /VERSION) > sw.js CACHE_NAME matches /VERSION (PWA cache busting)
 
+**js/components/library-constants.test.js**
+
+  - [+] originBadge > returns null for empty/unknown origin
+  - [+] originBadge > maps a known origin to its label and an icon
+  - [+] originBadge > uses the explicit name over the generic label
+  - [+] originBadge > falls back to the library icon for an unknown but truthy origin
+  - [+] originBadge > exposes a label for every mapped origin
+
 **js/components/utils-lit.test.js**
 
   - [+] safeToFixed > formats valid numbers
@@ -547,7 +577,7 @@ Generated: **2026-06-15 21:13 UTC**
 
 **tests.test_admin.TestListOrders**
 
-  - [+] test_list_orders (0.56s)
+  - [+] test_list_orders (0.64s)
   - [+] test_list_orders_no_auth (0.01s)
 
 **tests.test_admin.TestStats**
@@ -568,7 +598,7 @@ Generated: **2026-06-15 21:13 UTC**
 
 **tests.test_portal.TestPubConfig**
 
-  - [+] test_returns_config (0.01s)
+  - [+] test_returns_config (0.02s)
 
 **tests.test_portal.TestCheck**
 
@@ -588,11 +618,11 @@ Generated: **2026-06-15 21:13 UTC**
 **tests.test_webhook.TestPayPalWebhookReceive**
 
   - [+] test_ipn_returns_200 (0.02s)
-  - [+] test_ipn_empty_body (0.02s)
+  - [+] test_ipn_empty_body (0.01s)
 
 **tests.test_webhook.TestPayPalWebhookProcessing**
 
-  - [+] test_verified_completed_creates_order (0.04s)
+  - [+] test_verified_completed_creates_order (0.03s)
   - [+] test_invalid_pingback_creates_no_order (0.02s)
   - [+] test_non_completed_status_ignored (0.02s)
   - [+] test_receiver_email_mismatch_ignored (0.02s)
