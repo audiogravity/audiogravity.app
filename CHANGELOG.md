@@ -19,6 +19,18 @@ and this landing) are documented here. Format based on
   Qobuz OAuth (auto-redirect, no paste) and Tidal PKCE (copy/paste the redirect
   URL), noting the required subscription tier for each.
 
+### Changed
+- **[frontend] Library search lists UPnP/DLNA servers** — known media servers
+  (e.g. MinimServer) now appear as sources in Library search, alongside MPD, Roon,
+  Qobuz and Tidal (previously missing).
+- **[frontend] Settings: single version + logout moved in** — the panel now shows
+  one unified product version (front and back share it) with the Swagger API link,
+  and the Logout button moved from the top bar into the Settings footer.
+- **[frontend] Top-bar icons** — the settings button now uses a gear icon and the
+  mobile navigation button a hamburger (swapped for clarity).
+- **[frontend] Source connection status uses the shared status dot** — Qobuz,
+  Tidal and HQPlayer now render the same status indicator as the other sources.
+
 ### Fixed
 - **[backend] Tidal playback skipped every track** — the seek cache pre-created
   the remux output file, so ffmpeg (run without `-y`) refused to overwrite it and

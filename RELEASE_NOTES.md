@@ -17,6 +17,17 @@ identical ("MPD"), so you couldn't tell a Tidal track from a Qobuz one or from a
 file on your NAS. The badge is derived server-side from the active stream, so it
 stays accurate as you switch sources.
 
+### Library & Settings refinements
+
+- **UPnP/DLNA servers in Library search** — media servers such as MinimServer now
+  appear as search sources next to MPD, Roon, Qobuz and Tidal (they were missing).
+- **Settings panel** — a single unified product version (front and back share it)
+  next to the Swagger API link, and the **Logout** button moved from the top bar
+  into the Settings footer for a cleaner top bar.
+- **Polish** — the settings button uses a gear icon (mobile nav uses a hamburger),
+  and Qobuz/Tidal/HQPlayer now share the same connection status indicator as the
+  other sources.
+
 ---
 
 ## 0.9.3 — 2026-06-14
