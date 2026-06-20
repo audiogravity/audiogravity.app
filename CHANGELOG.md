@@ -10,6 +10,14 @@ and this landing) are documented here. Format based on
 ## [Unreleased]
 
 ### Fixed
+- **[backend] License — server response handling hardened** — `/check` and `/activate` now verify HTTP status before calling `resp.json()`; unexpected Pydantic shapes return 502; `lic_content` validated as JSON before writing to disk; `X-Verify-Key` header extracted to `_verify_headers()` helper; `_portal_base()` validates URL structure.
+- **[backend] Services — enum comparison bug** — `validate_service_properties` was comparing `CPUSchedulingPolicy`/`IOSchedulingClass` enum members to plain strings (always-false conditions); corrected to compare against enum values.
+- **[backend] Services — D-Bus call unguarded** — `get_unit_file_state()` now wrapped in `asyncio.wait_for(timeout=2s)`; timeout logs a warning and falls back to subprocess.
+- **[backend] Services — stale cgroup FD not evicted** — `fd.seek(0)` failure now evicts the dead FD from the LRU cache instead of leaving it for the next call.
+- **[backend] Services — `service_name` path param unvalidated** — all `service_name` Path params now carry `pattern=r"^[a-zA-Z0-9._@-]+(?:\.service)?$"` → 422 on invalid input.
+- **[backend] audio_app_config — path traversal via symlink** — `_validate_path` now calls `resolve()` first, then checks `is_relative_to()` on the resolved path; a symlink pointing outside `/etc` is rejected even if the link itself lives inside `/etc`.
+- **[backend] audio_app_config — restart duplication** — `_restart_service()` extracted; `update_config` and `restore_backup` both delegate to it.
+- **[backend] audio_app_config — `model_validator` incorrect** — `@field_validator('content','data')` replaced with `@model_validator(mode='after')` for correct single-evaluation semantics.
 - **[backend] Packages — shell injection via installer config** — `install_script_args`, `check_command`, `uninstall_commands` and `version_check_command` now use `shlex.split` + `create_subprocess_exec` instead of `shell=True` f-strings. `version_check_url` validated against `ALLOWED_DOWNLOAD_DOMAINS`. `gpg_key_path` and `sources_list_path` validated by `_validate_destination_path()` before any `sudo cp`. `_validate_package_name()` added in `apt_repo.py`. 9 security tests added.
 - **[backend] Player `_poll_loop` NameError on `get_now_playing()` failure** — `items` now initialised to `[]` before the try block, preventing `NameError` when `get_now_playing()` raises.
 - **[backend] Player DSD state inconsistent after partial `gather()` failure** — `_dsd_active` reset to `False` on exception so volumes are not left partially forced.
