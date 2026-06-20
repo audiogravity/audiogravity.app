@@ -48,7 +48,7 @@
     <div class="announce-bar">
         <a href="https://github.com/audiogravity/audiogravity.app/blob/main/RELEASE_NOTES.md">
             <span class="announce-badge">NEW</span>
-            v0.9.3 beta is available — Tidal HiFi streaming, Charts &amp; in-track seek
+            v0.9.4 — Backend hardening, frontend security fixes &amp; 500+ tests
             <span class="announce-arrow">→</span>
         </a>
     </div>
@@ -200,7 +200,7 @@
     <section class="section" id="features">
         <div class="w">
             <div class="section-label">Features</div>
-            <h2 class="section-title">From the kernel<br>to your Qobuz library.</h2>
+            <h2 class="section-title">From the kernel<br>to your Qobuz &amp; Tidal library.</h2>
             <p class="section-sub">Fourteen modules orchestrating every layer of your streamer — RT kernel tuning,
                 service control, signal-path visualisation, unified transport across MPD, Roon, HQPlayer, AirPlay,
                 UPnP and internet radio. Starter ships with the essentials; Pro unlocks the deep audio-engineering
@@ -215,13 +215,14 @@
                         </svg></div>
                     <h3>Unified transport across every player</h3>
                     <p>One interface, one set of controls, every engine your streamer runs. Transport, volume, seek and
-                        cover art on MPD, Roon, HQPlayer, AirPlay and UPnP simultaneously. Live Hi-Fi readout —
-                        format (PCM / DSD / MQA), sample rate, bit depth, instantaneous bitrate — refreshed on every
+                        cover art on MPD, Roon, HQPlayer, AirPlay and UPnP simultaneously. A <b>stream origin badge</b>
+                        in the Now Playing bar always tells you where the audio is coming from — Tidal, Qobuz, your
+                        UPnP server by name, a radio station, a local file or AirPlay. Live Hi-Fi readout —
+                        format (PCM / DSD), sample rate, bit depth, instantaneous bitrate — refreshed on every
                         track change. Pick the output zone: Roon zone, UPnP renderer or ALSA port. Built-in sleep timer
                         pauses playback after a set duration. Audiogravi<sup>ty</sup>
                         conducts; your engines play.</p>
-                    <span class="fb-chip">MPD · Roon · HQPlayer · AirPlay · UPnP · sleep timer · live Hi-Fi
-                        readout</span>
+                    <span class="fb-chip">MPD · Roon · HQPlayer · AirPlay · UPnP · stream origin · sleep timer · live Hi-Fi readout</span>
                 </div>
 
                 <div class="fb span2">
@@ -307,7 +308,7 @@
                     <h3>Live signal-path visualisation</h3>
                     <p>An interactive SVG graph of your entire Hi-Fi chain — source (NAS, UPnP, Qobuz, Tidal) through
                         every active audio process down to the DAC. Pan, zoom, minimap for complex topologies. Each
-                        link shows the exact stream format (PCM / DSD / MQA · 44.1 kHz → 768 kHz · 16 → 32 bit), a
+                        link shows the exact stream format (PCM / DSD · 44.1 kHz → 768 kHz · 16 → 32 bit), a
                         bit-perfect badge, per-link latency, and live play state. Click a link to hot-reroute MPD,
                         HQPlayer NAA or AirPlay to a different DAC — without interrupting playback.</p>
                     <span class="fb-chip">DAG · pan · zoom · minimap · hot rerouting</span>
@@ -323,9 +324,11 @@
                         </svg></div>
                     <h3>High-resolution library</h3>
                     <p>Browse Roon, MPD, MinimServer, upmpdcli, Qobuz and Tidal from one interface. Album view,
-                        full-text search, queue management, output-zone picker. No separate client needed.
+                        full-text search, queue management, output-zone picker. UPnP/DLNA servers appear as
+                        search sources alongside MPD and streaming services — search results are directly playable,
+                        with titles and cover art. No separate client needed.
                         Qobuz and Tidal require an active subscription to their respective services.</p>
-                    <span class="fb-chip">Roon · MPD · UPnP · Qobuz · Tidal</span>
+                    <span class="fb-chip">Roon · MPD · UPnP/DLNA · Qobuz · Tidal</span>
                 </div>
 
                 <div class="fb span2 dark">
@@ -730,8 +733,16 @@
                             <td class="cmp-part">partial (HQPlayer)</td>
                         </tr>
                         <tr>
-                            <td class="cmp-cap">UPnP MediaServer browse (Qobuz / Tidal / NAS via MinimServer, upmpdcli)
-                            </td>
+                            <td class="cmp-cap">Native Tidal &amp; Qobuz streaming (OAuth2 / PKCE, no UPnP required)</td>
+                            <td class="cmp-ag cmp-yes">✓</td>
+                            <td class="cmp-yes">✓</td>
+                            <td class="cmp-yes">✓ (Premium)</td>
+                            <td class="cmp-part">partial (via upmpdcli)</td>
+                            <td class="cmp-no">—</td>
+                            <td class="cmp-no">—</td>
+                        </tr>
+                        <tr>
+                            <td class="cmp-cap">UPnP MediaServer browse &amp; search (NAS via MinimServer, upmpdcli — results directly playable)</td>
                             <td class="cmp-ag cmp-yes">✓</td>
                             <td class="cmp-yes">✓</td>
                             <td class="cmp-yes">✓</td>
@@ -1287,8 +1298,8 @@
                     <div class="tagline">The conductor of your streamer. Every player, every source, total control.
                     </div>
                     <div class="version"><a
-                            href="https://github.com/audiogravity/audiogravity.app/blob/main/CHANGELOG.md">v0.9.2
-                            beta (Early Access)</a> · Proprietary license</div>
+                            href="https://github.com/audiogravity/audiogravity.app/blob/main/CHANGELOG.md">v0.9.4
+                            (Early Access)</a> · Proprietary license</div>
                 </div>
                 <div class="footer-col">
                     <h4>Product</h4>
@@ -1310,6 +1321,7 @@
                     <a href="https://github.com/audiogravity/audiogravity.app/blob/main/EDITIONS.md">Editions /
                         Plans</a>
                     <a href="https://github.com/audiogravity/audiogravity.app/blob/main/EULA.md">EULA</a>
+                    <a href="https://github.com/audiogravity/audiogravity.app/blob/main/THIRD_PARTY_NOTICES.md">Open Source</a>
                     <a href="mailto:contact@audiogravity.app">Contact</a>
                 </div>
             </div>

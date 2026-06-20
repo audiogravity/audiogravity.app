@@ -84,6 +84,8 @@
 
 Pro is a lifetime license — no subscription, no renewal. See [EDITIONS.md](EDITIONS.md) and [EULA.md](EULA.md).
 
+Audiogravity incorporates open-source components. See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for the full list of third-party libraries and their license terms.
+
 ## Quick install
 
 ```bash
@@ -165,6 +167,7 @@ See [TEST_REPORT.md](TEST_REPORT.md) for the full per-test breakdown.
 
 - [RELEASE_NOTES.md](RELEASE_NOTES.md) — synthesized release notes per version
 - [CHANGELOG.md](CHANGELOG.md) — detailed changelog (single source of truth)
+- [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) — open-source components and license attributions
 
 ## Coming soon
 

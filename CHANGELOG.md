@@ -9,6 +9,11 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Added
+- **[landing] `THIRD_PARTY_NOTICES.md`** — full attribution for all open-source components: frontend (Lit, Cytoscape, dagre, Lucide, Chart.js, CodeMirror, Inter, JetBrains Mono), backend (FastAPI, Pydantic, pywebpush/MPL-2.0, cryptography, roonapi, 15+ libraries), runtime binaries (ffmpeg/LGPL, cyclictest/GPL-2, iperf3/BSD-3, smartctl/GPL-2), external API (Radio Browser), and optionally-installable audio software (MPD, upmpdcli, shairport-sync, HQPlayer NAA, Roon Bridge/Server).
+- **[landing] `index.html`** — announce bar updated to v0.9.4; Features section: title includes Tidal, Unified Transport card adds stream origin badge, High-resolution library card mentions UPnP search playable, MQA removed from signal-path description; Compare table: new row for native Tidal & Qobuz streaming (OAuth2/PKCE), UPnP row updated to mention search + directly playable results; footer version v0.9.4 and "Open Source" link in Legal.
+- **[landing] `README.md`** — reference to `THIRD_PARTY_NOTICES.md` in license paragraph and Documentation section.
+
 ## [0.9.4] - 2026-06-20
 
 ### Fixed
