@@ -10,6 +10,10 @@ and this landing) are documented here. Format based on
 ## [Unreleased]
 
 ### Fixed
+- **[backend] core — D-Bus proxy cache eviction on error** — stale unit proxies are now removed from `_unit_proxy_cache` on `call_get_all` failure so the next call rebuilds a fresh proxy instead of reusing a dead one indefinitely.
+- **[backend] core — Roon disconnect timeout** — `_roon_api.stop()` wrapped in `asyncio.wait_for(timeout=5)` to prevent indefinite hang; state is always cleaned up in `finally`.
+- **[backend] core — JWT decode error log sanitised** — exception logged as `type(e).__name__` only, preventing any token fragment from appearing in logs.
+- **[backend] core — EventBus `QueueFull` now logged** — slow subscriber drop logged at DEBUG level for diagnostics; `logging` module added to `events.py`.
 - **[backend] sysinfo — `smartctl` `FileNotFoundError` crashes monitor** — caught and degraded gracefully; disk temperature returns `None` when `smartctl` is absent. `SYSLOG_IDENTIFIER` fixed to `_SYSLOG_IDENTIFIER=` (journalctl match syntax). Invalid `grep_pattern` regex now returns 400. `lscpu` absence caught. Admin PTY shell logs an audit entry.
 - **[backend] push — `webpush()` without timeout** — `timeout=10` added to prevent indefinite blocking on unreachable endpoints. Endpoint now validated as HTTPS URL. `endpoint` query param annotated with `Query()`. `logger.error` on successful unsubscribe changed to `logger.info`.
 - **[backend] config_validation — `appconfigfile` path traversal** — paths now validated against `/etc` and `/usr/local/etc` whitelist (mirrors `audio_app_config`). `systemd_unit` bounded to `max_length=255`. Substring match replaced with line-start check. `ValueError` in validation now returns 400 instead of 500.
