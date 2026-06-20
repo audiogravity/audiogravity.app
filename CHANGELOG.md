@@ -9,6 +9,14 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Fixed
+- **[backend] Auth `POST /users` returned 200 instead of 201** — corrected to `HTTP_201_CREATED`.
+- **[backend] Auth `PATCH /users/{u}` accepted whitespace-only password** — passwords that are blank after `.strip()` are now rejected with 400.
+- **[backend] Auth `update_user` race condition post-update** — `update_user()` now returns `Optional[User]` directly, eliminating the separate `get_user()` call after write.
+- **[backend] Auth WebAuthn userHandle exception was silent** — bare `except` replaced with `logger.warning()` for diagnosis; `_b64url_to_bytes` moved to module top.
+- **[core] `users.py` write race condition** — `_save_users` now holds a `threading.Lock` for thread-safe concurrent writes.
+- **[core] JWT missing `jti` claim** — `uuid.uuid4()` added to every token payload, enabling future revocation support.
+
 ### Added
 - **[backend] HQPlayer `POST /hqplayer/stop`** — endpoint to stop playback (was documented but not implemented); also adds `stop()` service method and `has_dsp_config` public property. 13 unit tests added covering stop, Literal validation, `has_dsp_config`, `_read_xml_response` helper, and play request validation.
 
