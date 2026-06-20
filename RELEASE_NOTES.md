@@ -19,10 +19,10 @@ stays accurate as you switch sources.
 
 ### Library & Settings refinements
 
-- **UPnP/DLNA servers in Library search** — media servers such as MinimServer now
+- **UPnP/DLNA search fully playable** — media servers such as MinimServer now
   appear as search sources next to MPD, Roon, Qobuz and Tidal. Selecting one while
-  in the Search tab runs a text query against that server; selecting one elsewhere
-  opens the UPnP browser.
+  in the Search tab runs a text query against that server; clicking "+" or play on
+  a result adds it to MPD with correct title, cover art and server badge.
 - **Config editor — blank file hint** — when a service config has all sections
   empty (package defaults, e.g. a fresh Debian shairport-sync install), the form
   view now shows a clear banner instead of a series of empty `{}` boxes, with a

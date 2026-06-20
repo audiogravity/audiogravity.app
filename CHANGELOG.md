@@ -29,6 +29,13 @@ and this landing) are documented here. Format based on
   Qobuz OAuth (auto-redirect, no paste) and Tidal PKCE (copy/paste the redirect
   URL), noting the required subscription tier for each.
 
+### Added
+- **[backend] UPnP search queue** — clicking "+" or play on a UPnP/DLNA search
+  result now works: track stream URLs are passed directly to MPD, album items are
+  resolved via ContentDirectory Browse. Titles and cover art are pre-registered
+  during search so the queue display and Now Playing badge are enriched immediately.
+  17 unit tests cover track/album/routing/metadata-registration cases.
+
 ### Fixed
 - **[backend] `_ext_stream_key` anchored to URL path/query** — Tidal detection
   now checks the URL *path* for `/tidal/stream/` and Qobuz detection checks the
