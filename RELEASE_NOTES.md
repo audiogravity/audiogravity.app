@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.4 — 2026-06-20
+
 ### Frontend — Security, reliability & code quality
 
 A targeted frontend review produced the following improvements:

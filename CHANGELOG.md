@@ -9,6 +9,8 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+## [0.9.4] - 2026-06-20
+
 ### Fixed
 - **[backend] Pydantic v2 deprecation — `.dict()` → `.model_dump()`** — `services/service.py` was using the deprecated `.dict()` method; replaced with `.model_dump()`.
 - **[tests] RuntimeWarning coroutines never awaited** — two test helpers left coroutines unawaited when patching `asyncio.wait_for`; both fixed by closing coroutines before raising or restructuring the mock.
