@@ -10,6 +10,8 @@ and this landing) are documented here. Format based on
 ## [Unreleased]
 
 ### Fixed
+- **[backend] Pydantic v2 deprecation — `.dict()` → `.model_dump()`** — `services/service.py` was using the deprecated `.dict()` method; replaced with `.model_dump()`.
+- **[tests] RuntimeWarning coroutines never awaited** — two test helpers left coroutines unawaited when patching `asyncio.wait_for`; both fixed by closing coroutines before raising or restructuring the mock.
 - **[frontend] Code duplication removed across components** — `loadConnection(host, fetchFn, tag)` helper extracted to `utils-lit.js`, used by Qobuz/Tidal/HQPlayer output molecules (3×10 lines removed). `queueWithFeedback(queueFn, label)` helper added to `library-api.js`, used by `ag-library-search` and `ag-library-browse`. `_formatRelativeTime()` removed from `ag-service-card` and `ag-profile-card` in favour of the existing `formatTimestamp()` from `utils-lit.js`. 16 unit tests added (formatTimestamp, loadConnection, queueWithFeedback, escapeHtml XSS, jitterChart destroy, push URL format, password trim).
 - **[frontend] XSS — `escapeHtml` imported directly in `ag-admin-page`** — removed `window.escapeHtml ? ... : username` ternary; `escapeHtml` now imported as an ES6 module so username is always escaped in the delete-user confirmation dialog.
 - **[frontend] XSS — `unsafeHTML(this.label)` removed from `ag-metric-detail`** — label prop now bound with Lit's auto-escaping (`${this.label}`); unused `unsafeHTML` import removed.
