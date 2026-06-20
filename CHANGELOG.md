@@ -10,6 +10,14 @@ and this landing) are documented here. Format based on
 ## [Unreleased]
 
 ### Fixed
+- **[backend] Steering — ALSA device injection via config write** — `alsa_device` now validated against `^hw:\d+,\d+$` before any config file substitution; `get_steerability()` no longer hardcodes `upmpdcli`/`roonbridge` as always available; `_verify_alsa_device_exists()` checks `/proc/asound/cardX/pcmYp` (playback subdevice), not just the card directory.
+- **[backend] Performance — cyclictest `IndexError` on trailing token** — bounds check (`i + 1 < len(tokens)`) added to the cyclictest line parser.
+- **[backend] Performance — `$CONFIG_FILE` unquoted in boot script** — config path now passed as `sys.argv[1]` and shell-quoted (`"$CONFIG_FILE"`), preventing word-splitting on paths with spaces.
+- **[backend] Performance — `duration_seconds` always 0** — test start captured with `time.monotonic()`; actual elapsed time stored in `LatencyTestResult`.
+- **[backend] Performance — bare `except:` clauses** — replaced with `except (ValueError, IndexError)` and `except (subprocess.TimeoutExpired, OSError)`.
+- **[backend] Profiles — `asyncio.gather()` without timeout** — both stop and start phases wrapped in `asyncio.wait_for(timeout=30)`.
+- **[backend] Profiles — `stopped_count` counted FAILED as stopped** — FAILED state now goes to `failed_count`; only INACTIVE/DEAD states increment `stopped_count`.
+- **[backend] Profiles — export written to world-readable `/tmp`** — export path moved to `settings.audiogravity_home` with `chmod(0o600)`.
 - **[backend] License — server response handling hardened** — `/check` and `/activate` now verify HTTP status before calling `resp.json()`; unexpected Pydantic shapes return 502; `lic_content` validated as JSON before writing to disk; `X-Verify-Key` header extracted to `_verify_headers()` helper; `_portal_base()` validates URL structure.
 - **[backend] Services — enum comparison bug** — `validate_service_properties` was comparing `CPUSchedulingPolicy`/`IOSchedulingClass` enum members to plain strings (always-false conditions); corrected to compare against enum values.
 - **[backend] Services — D-Bus call unguarded** — `get_unit_file_state()` now wrapped in `asyncio.wait_for(timeout=2s)`; timeout logs a warning and falls back to subprocess.
