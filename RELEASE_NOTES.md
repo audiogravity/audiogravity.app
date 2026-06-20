@@ -17,6 +17,14 @@ identical ("MPD"), so you couldn't tell a Tidal track from a Qobuz one or from a
 file on your NAS. The badge is derived server-side from the active stream, so it
 stays accurate as you switch sources.
 
+### Reliability — Tidal & Qobuz
+
+When Tidal or Qobuz reverse-engineered client credentials rotate (which happens
+periodically without notice), AG now detects the 401/403 response and logs a
+clear ERROR with a remediation hint instead of returning an opaque failure. The
+Tidal stream endpoint returns HTTP 503 so MPD gets a clean error rather than a
+broken stream.
+
 ### Library & Settings refinements
 
 - **UPnP/DLNA search fully playable** — media servers such as MinimServer now

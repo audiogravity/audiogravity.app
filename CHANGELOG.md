@@ -28,8 +28,6 @@ and this landing) are documented here. Format based on
 - **[landing] FAQ — connecting Qobuz or Tidal** — one entry covering both flows:
   Qobuz OAuth (auto-redirect, no paste) and Tidal PKCE (copy/paste the redirect
   URL), noting the required subscription tier for each.
-
-### Added
 - **[backend] UPnP search queue** — clicking "+" or play on a UPnP/DLNA search
   result now works: track stream URLs are passed directly to MPD, album items are
   resolved via ContentDirectory Browse. Titles and cover art are pre-registered
