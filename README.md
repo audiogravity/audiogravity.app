@@ -74,6 +74,8 @@
   </tr>
 </table>
 
+> **Note:** Qobuz and Tidal streaming require an active subscription to their respective services — [Qobuz Studio or Sublime](https://www.qobuz.com) · [Tidal HiFi](https://tidal.com). Audiogravity does not provide access to these services.
+
 ## Editions
 
 | Edition | Price | What it unlocks |
