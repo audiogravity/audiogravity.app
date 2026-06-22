@@ -57,6 +57,43 @@ and this landing) are documented here. Format based on
 - **[backend] audio_app_config — shairport serialiser produced unindented nested blocks** — `_dict_to_libconfig` applied `indent_str` to leaf values but not to block headers or delimiters, producing malformed libconfig on save; round-trip parse→save→parse was broken for any config with nested sections.
 - **[backend] audio_app_config — `_map_device_to_name` O(n×m) scan** — iterated all cards then all devices to find a card by ID; replaced with `audio_hw_service.get_card_by_id()` which is O(1) via the card index.
 - **[tests] `test_version.py` + `test_push.py` — paths broken after monorepo split** — `parents[2]` pointed to `/home/ad` (old monorepo root); fixed to `parents[1]` (repo root). Script path updated to `scripts/generate_vapid_keys.py`.
+- **[backend] packages — `_validate_destination_path` path-traversal bypass** — bare `startswith(allowed_path)` matched `/tmp/audiogravity-packages-evil`; fixed with separator-aware check (`startswith(root + "/") or == root`).
+- **[backend] packages — `yes_proc` leaked on install timeout** — when `use_yes=True` and `communicate()` timed out, only the main process was killed; the `yes` subprocess kept running indefinitely. Fixed with `yes_proc.kill()` in the timeout handler.
+- **[backend] packages — `installation_logs` O(n) eviction** — `list.pop(0)` shifted 499 entries per log line; replaced with `deque(maxlen=500)` for O(1) eviction.
+- **[backend] packages — background version-check task not tracked** — `asyncio.create_task` result discarded; `cleanup()` method added to cancel it on shutdown.
+- **[backend] performance — `subprocess.run` blocking in async governor methods** — `_write_cpu_file`, `save_governor_config`, and `create_systemd_service` blocked the event loop; wrapped in `asyncio.to_thread`.
+- **[backend] performance — `cancel_test` blocked event loop on `process.wait()`** — `subprocess.Popen.wait(timeout=2)` ran synchronously inside an `async def`; replaced with `await asyncio.to_thread(process.wait, timeout=2)`.
+- **[backend] performance — stddev computed by expanding histogram to 1 M-entry list** — `statistics.pstdev([lat]*count …)` allocated ~28 MB per test on Pi; replaced with weighted variance over histogram buckets (O(k), k ≤ 200).
+- **[backend] performance — `cleanup()` published `service_started` on shutdown** — wrong `event_type`; corrected to `service_stopped`.
+- **[backend] performance — `logger.warn()` removed in Python 3.13** — replaced with `logger.warning()`.
+- **[backend] profiles — critical-stop error recorded but service start not gated** — French error string only; the `if/else` already gates the start correctly (finding was a false positive on the logic, only the French string was fixed).
+- **[backend] profiles — bare `except: pass` in `_listen_for_service_events`** — silently discarded all `ServiceState` parse errors; replaced with `except (ValueError, KeyError) as exc: logger.debug(...)`.
+- **[backend] push — `ec.generate_private_key` monkey-patch applied on every instantiation** — double-wrapping risk; guarded with `getattr(..., '__name__') != '_patched_generate'` so the patch is applied at most once per process.
+- **[backend] services — `_get_cgroup_path` called `subprocess.run` without `asyncio.to_thread`** — blocked the event loop on every service monitoring poll; wrapped with `to_thread` at all three call sites.
+- **[backend] steering — `_verify_alsa_device_exists`, `_verify_audio_flow`, `_get_active_alsa_devices` blocked event loop** — synchronous `/proc/asound` reads in async methods; extracted into `_*_sync` static methods called via `asyncio.to_thread`.
+- **[backend] sysinfo — `CPUInfo` with stale `current_freq` cached permanently** — the full object including the dynamic frequency was cached on first call; now only immutable fields are cached and `current_freq` is re-read on every call.
+- **[backend] sysinfo — `"Moins d'une minute"` returned as API `uptime_duration`** — French string in a user-facing JSON field; replaced with `"Less than a minute"`.
+- **[backend] sysinfo — `asyncio.get_event_loop()` deprecated in log streamer and WebSocket terminal** — replaced with `asyncio.get_running_loop()`.
+- **[backend] sysinfo — thermal zone reads blocking in async `_get_temperature_info`** — synchronous `open()` calls inside async method; extracted to `_read_zone_temps` sync helper called via `asyncio.to_thread`.
+- **[backend] radio — missing `await` on `add_custom_station`** — the endpoint returned a coroutine object, making custom station creation permanently broken; `await` added.
+- **[backend] tidal — `submit_redirect` failure not surfaced** — the router ignored the `bool` return value and always responded HTTP 200; now raises HTTP 400 on failure.
+- **[backend] tidal — `out.read()` blocking in async stream generator** — every audio chunk read called `out.read()` synchronously on the event loop; replaced with `await asyncio.to_thread(out.read, _CHUNK)`.
+- **[backend] tidal — PKCE `code_verifier` logged on token-exchange failure** — full error response body written to logs; now only `error` and `error_description` fields are logged.
+- **[backend] tidal — concurrent `start_pkce()` calls silently corrupted each other's verifier** — logged a warning when a flow is already pending; callers should not call `start_pkce` twice without completing the flow.
+- **[backend] qobuz — `_extract_secrets` silently produced wrong secrets when bundle regex found no matches** — now raises `RuntimeError` when no timezone has a complete seed+info+extras triplet.
+- **[backend] qobuz — concurrent bundle cache misses fetched the 200 KB JS twice** — `asyncio.Lock` added with double-checked locking.
+- **[backend] radio — `_discover_mirrors` fire-and-forget task not tracked** — `_discover_task` stored on instance; `stop()` added to cancel it; exceptions now surface via `add_done_callback`.
+- **[backend] radio — `_by_url` dict grew unbounded from search hits** — capped at 1000 entries with eviction of non-saved entries.
+- **[backend] player — `_get_active_alsa_card` blocked event loop on `/proc/asound` scan during DSD poll** — synchronous filesystem walk extracted to `_scan_active_alsa_card_sync` and called via `asyncio.to_thread`.
+- **[core] sse_manager — `shutdown()` called `.cancel()` on a `List[Task]` instead of each task** — `AttributeError` on every graceful shutdown; monitoring loops kept running after the event loop closed.
+- **[core] utils/files — `os.fsync()` in `atomic_write_json` blocked event loop 50–300 ms on SD card flush** — removed; `os.replace()` atomic rename is sufficient for config-file integrity.
+- **[core] dbus_client — `get_dbus_client()` singleton had no concurrency guard** — two concurrent callers both created separate D-Bus connections; `asyncio.Lock` added.
+- **[core] roon_client — `get_roon_client()` singleton had no concurrency guard** — `asyncio.Lock` with double-checked locking added.
+- **[core] http — `_get_shared_session()` not coroutine-safe** — two concurrent first callers both created `ClientSession`; `asyncio.Lock` added.
+- **[core] dbus_client — bare `except: pass` swallowed `asyncio.CancelledError`** — replaced with `except (TypeError, ValueError): pass`.
+- **[core] ttl_cache — `TTLCache.get()` always missed for a cached `None` value** — `_value is not None` guard prevented `None` from being representable as a cache hit; replaced with `_UNSET` sentinel.
+- **[core] JWT and auth error messages in French** — `"Token invalide ou expiré"`, `"Accès réservé aux administrateurs"`, `"Les invités ne sont pas autorisés"` translated to English (returned verbatim in JSON API responses).
+- **[packages] `www.lesbonscomptes.com` domain entry did not survive `www.` stripping** — changed to `lesbonscomptes.com` fixing an intermittent test failure.
 
 ### Added
 - **[backend] audio_hw — `force_refresh` query parameter on `GET /audio-hw/devices`** — `?force_refresh=true` bypasses the 60 s cache and triggers an immediate rescan, useful after a USB hotplug event.
