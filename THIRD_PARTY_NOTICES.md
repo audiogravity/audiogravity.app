@@ -25,8 +25,17 @@ software without specific prior written permission.
 
 ---
 
+### @lit/context
+**Copyright** © 2021 Google LLC. All rights reserved.  
+**License** BSD-3-Clause  
+**Source** https://github.com/lit/lit/tree/main/packages/context  
+
+Same BSD-3-Clause terms as above.
+
+---
+
 ### Cytoscape.js
-**Copyright** © 2016–2024 The Cytoscape Consortium  
+**Copyright** © 2016–2026 The Cytoscape Consortium  
 **License** MIT  
 **Source** https://js.cytoscape.org  
 
@@ -42,7 +51,7 @@ the Software.
 ---
 
 ### cytoscape-dagre
-**Copyright** © 2016 Max Franz  
+**Copyright** © 2016–2018, 2020, 2022 The Cytoscape Consortium  
 **License** MIT  
 **Source** https://github.com/cytoscape/cytoscape.js-dagre  
 
@@ -74,7 +83,7 @@ copyright notice and this permission notice appear in all copies.
 ## Frontend — loaded via CDN at runtime
 
 ### Chart.js 4.4.0
-**Copyright** © 2014–2024 Chart.js Contributors  
+**Copyright** © 2014–2022 Chart.js Contributors  
 **License** MIT  
 **Source** https://www.chartjs.org  
 
@@ -94,7 +103,7 @@ Same MIT terms as above.
 ## Frontend — fonts loaded via Google Fonts CDN
 
 ### Inter
-**Copyright** © 2020 The Inter Project Authors  
+**Copyright** © 2016 The Inter Project Authors  
 **License** SIL Open Font License 1.1  
 **Source** https://rsms.me/inter  
 
