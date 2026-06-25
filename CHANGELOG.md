@@ -9,6 +9,8 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+## [0.9.6] - 2026-06-25
+
 ### Fixed
 - **[core] audio_pipeline — cover art missing or wrong when playing via upmpdcli renderer** — when an external UPnP control point (BubbleUPnP, Kazoo…) pushed music or radio to upmpdcli, AG fell back to MusicBrainz/iTunes which returned the wrong album cover or nothing. A new `upmpdcli_cover` module queries upmpdcli's AVTransport `GetPositionInfo` to retrieve the exact `upnp:albumArtURI` the controller sent (including radio station logos). Discovery is restricted to the local machine to avoid picking up network renderers (Marantz, etc.). Tidal and Qobuz proxy streams are excluded from the AVTransport path. Miss backoff (60 s TTL) and a provisional sentinel prevent SSDP storms on concurrent SSE ticks.
 - **[core] hqplayer — WARNING flood at startup when HQPlayer not yet configured** — `get_status()` attempted a TCP connection even when `_host` was `None` (not yet configured via UI), generating a warning on every poll. Guard added: returns `HQPlayerStatus(available=False)` immediately without attempting connection. Regression from `0409bb5`.
