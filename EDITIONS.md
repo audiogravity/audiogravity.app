@@ -38,7 +38,7 @@ Existing holders receive a **preferential upgrade price** for new major versions
 Everything in Starter, plus:
 
 - **Player** — full transport controls across all sources (MPD, Roon, AirPlay, UPnP, HQPlayer): play/pause, seek, next/prev, volume, repeat/shuffle and real-time Hi-Fi format readout (PCM / DSD, sample rate, bit depth, bitrate)
-- **Library** — high-resolution music library for Roon, MPD, UPnP servers (MinimServer, upmpdcli), Qobuz and Tidal: album browsing, full-text search, queue management and output zone selection
+- **Library** — high-resolution music library for Roon, MPD, UPnP servers (MinimServer, upmpdcli), Qobuz and Tidal: album browsing, full-text search, queue management and output zone selection; **UPnP Control Point** to send audio directly to any DLNA/UPnP MediaRenderer on the network (amplifiers, networked speakers…)
 - **Internet radio** — Radio Browser directory, custom stations, favourites with Hi-Res filtering
 - **HQPlayer DSP remote** — change filter, noise shaper, output mode and volume from the couch, with automatic network discovery
 - **Audio Pipeline** — interactive DAG visualisation of the full signal chain from source to DAC: bit-perfection badge, format per link, real-time output steering without stopping playback

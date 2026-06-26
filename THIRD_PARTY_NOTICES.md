@@ -263,6 +263,42 @@ Same Apache-2.0 terms as above.
 
 ---
 
+### async-upnp-client
+**Copyright** © Steven Looman  
+**License** Apache-2.0  
+**Source** https://github.com/StevenLooman/async_upnp_client  
+
+Same Apache-2.0 terms as above.
+
+---
+
+### python-didl-lite
+**Copyright** © Steven Looman  
+**License** Apache-2.0  
+**Source** https://github.com/StevenLooman/python-didl-lite  
+
+Same Apache-2.0 terms as above.
+
+---
+
+### defusedxml
+**Copyright** © 2013–2022 Christian Heimes  
+**License** Python Software Foundation License 2.0 (PSFL)  
+**Source** https://github.com/tiran/defusedxml  
+
+Same PSFL terms as the Python Software Foundation License 2.0.
+
+---
+
+### voluptuous
+**Copyright** © 2010–2024 Alec Thomas  
+**License** BSD-3-Clause  
+**Source** https://github.com/alecthomas/voluptuous  
+
+Same BSD-3-Clause terms as above.
+
+---
+
 ### psutil
 **Copyright** © 2009 Jay Loden, Dave Daeschler, Giampaolo Rodola  
 **License** BSD-3-Clause  
