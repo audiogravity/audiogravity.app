@@ -7,17 +7,17 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
-### UPnP Control Point — envoyer la musique vers un renderer réseau
+### UPnP Control Point — send audio to network renderers
 
-AG peut maintenant piloter n'importe quel renderer UPnP/DLNA sur le réseau local (ampli réseau, enceinte DLNA, upmpdcli…). Sélectionne un renderer dans le panneau Sources, connecte-le, puis joue depuis la bibliothèque MinimServer, Qobuz ou Tidal — le flux part directement vers le renderer.
+AG can now control any UPnP/DLNA MediaRenderer on the local network (network amplifiers, DLNA speakers, upmpdcli…). Select a renderer in the Sources panel, connect it, then play from the MinimServer library, Qobuz or Tidal — the stream goes directly to the renderer.
 
-**Ce qui change :**
-- Nouvelle section "UPnP Renderer" dans le panneau Sources : discovery réseau, connexion persistée entre redémarrages, contrôles Play/Pause/Stop/Volume depuis l'interface.
-- Badge `→ renderer` dans le mini player et le fullscreen player pour indiquer le routage actif.
-- MinimServer → renderer : URI handoff (aucun proxy AG, aucune charge CPU supplémentaire).
-- Qobuz → renderer : URL CDN directe auto-authentifiée (HMAC, aucun proxy).
-- Tidal → renderer : proxy DASH→FLAC existant avec IP LAN (même qualité qu'avec MPD).
-- État du renderer mis à jour en temps réel via SSE (SUBSCRIBE/NOTIFY + heartbeat 30 s).
+**What's new:**
+- New "UPnP Renderer" section in the Sources panel: network discovery, connection persisted across restarts, Play/Pause/Stop/Volume controls from the interface.
+- `→ renderer` badge in the mini player and fullscreen player to indicate active routing.
+- MinimServer → renderer: URI handoff (zero AG proxy, zero extra CPU load).
+- Qobuz → renderer: self-authenticated CDN URL (HMAC, no proxy).
+- Tidal → renderer: existing DASH→FLAC proxy with LAN-reachable IP (same quality as MPD).
+- Renderer state updated in real time via SSE (SUBSCRIBE/NOTIFY + 30 s heartbeat fallback).
 
 ---
 
