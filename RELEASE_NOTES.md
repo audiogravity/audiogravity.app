@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.7 — 2026-06-26
+
 ### UPnP Control Point — send audio to network renderers
 
 AG can now control any UPnP/DLNA MediaRenderer on the local network (network amplifiers, DLNA speakers, upmpdcli…). Select a renderer in the Sources panel, connect it, then play from the MinimServer library, Qobuz or Tidal — the stream goes directly to the renderer.

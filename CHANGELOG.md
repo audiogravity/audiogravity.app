@@ -9,6 +9,8 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+## [0.9.7] - 2026-06-26
+
 ### Fixed
 - **[ui] library — radio form font harmonization** — `type="url"` inputs changed to `type="text" + inputmode="url"` so Safari/iOS no longer renders the value in monospace; `::placeholder` inherits typography from the input element; `image_url` field now validates with `pattern="https?://.+"`.
 - **[ui] library — "Add custom station" button border** — dashed border changed to solid.
