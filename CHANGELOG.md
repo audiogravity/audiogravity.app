@@ -9,6 +9,14 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+### Fixed
+- **[ui] library — radio form font harmonization** — `type="url"` inputs changed to `type="text" + inputmode="url"` so Safari/iOS no longer renders the value in monospace; `::placeholder` inherits typography from the input element; `image_url` field now validates with `pattern="https?://.+"`.
+- **[ui] library — "Add custom station" button border** — dashed border changed to solid.
+- **[ui] library — genre/country select font size** — increased from `font-size-xs` to `font-size-sm` for readability in the native dropdown.
+- **[ui] sources — redundant source descriptions removed** — Roon, Tidal, Qobuz source cards no longer repeat the source name as description; MPD keeps "Music Player Daemon"; Roon active source always shows at least the source name while zones are loading.
+- **[ui] sources — Qobuz and Tidal merged under "Streaming Services"** — reduces visual noise; service name shown in each molecule's own header.
+- **[ui] sources — `lib-settings-section` CSS class** — decoupled from `lib-hqp-section` so HQPlayer-specific style changes cannot bleed into other sections.
+
 ### Added
 - **[core] upnp_renderer — UPnP Control Point** — AG can now send audio to any UPnP/DLNA MediaRenderer on the network. New module `modules/upnp_renderer/`: SSDP discovery, AVTransport control (SetAVTransportURI, Play, Stop, Pause, Seek, Volume), SUBSCRIBE/NOTIFY eventing via AG's own FastAPI callback, connection persistence across restarts. Auto-reconnects to the last renderer on startup.
 - **[core] upnp_renderer — renderer dispatch in library queue** — `upnp_play()`, `qobuz_queue()` and `tidal_queue()` route to the connected renderer when `action='play'`. MinimServer tracks use URI handoff (renderer pulls directly from CDN/MinimServer). Qobuz uses self-authenticated CDN URL (no proxy). Tidal uses the existing DASH→FLAC proxy with LAN-reachable IP.
