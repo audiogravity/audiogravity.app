@@ -6,13 +6,13 @@ Generated: **2026-06-26 11:14 UTC**
 
 | | Tests | Passed | Failed | Skipped | Duration |
 |---|---:|---:|---:|---:|---:|
-| **backend** PASS | 610 | 610 | 0 | 0 | 34.3s |
-| **frontend** PASS | 218 | 218 | 0 | 0 | 0.6s |
+| **core** PASS | 610 | 610 | 0 | 0 | 34.3s |
+| **ui** PASS | 218 | 218 | 0 | 0 | 0.6s |
 | **Total** PASS | **828** | **828** | **0** | **0** | **35.0s** |
 
 ## Detail
 
-### backend
+### core
 
 **tests.test_app**
 
@@ -1239,7 +1239,7 @@ Generated: **2026-06-26 11:14 UTC**
   - [+] test_product_version_is_semver
   - [+] test_backend_version_matches_product_version
 
-### frontend
+### ui
 
 **js/api.test.js**
 
