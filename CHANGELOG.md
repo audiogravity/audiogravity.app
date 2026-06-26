@@ -10,6 +10,14 @@ and this landing) are documented here. Format based on
 ## [Unreleased]
 
 ### Added
+- **[core/ui] UPnP renderer — bypass mode** — new toggle in the Settings renderer card keeps the renderer connected (SUBSCRIBE active) but suspends audio routing to MPD. Enabling bypass stops the renderer immediately; disabling does not auto-restart. Badge `→ name` disappears in the player when bypassed. Endpoint: `PUT /upnp-renderer/bypass` body `{bypassed: bool}`. Field `bypassed` added to `RendererStatus`.
+
+### Fixed
+- **[core] UPnP renderer — disconnect now stops playback** — `disconnect()` calls `AVTransport Stop` before unsubscribing so the renderer stops playing immediately instead of continuing until the stream ends.
+- **[core] UPnP renderer — bypass survives reconnect** — `connect()` unconditionally resets `_bypassed = False` so a bypass set while the DMR was offline never silently persists into the new connection.
+- **[core] UPnP renderer — heartbeat skips SOAP calls when bypassed** — `GetTransportInfo/GetPositionInfo` and SUBSCRIBE renewals are suppressed during bypass, avoiding unnecessary network requests to an idle renderer.
+
+### Added
 - **[ui] PWA — App Shell precaching** — vite-plugin-pwa (injectManifest) precaches all Vite-hashed JS/CSS/image assets at SW install (~1 MiB); first load after install is fully offline-capable on Chrome/Android.
 - **[ui] PWA — differentiated cache strategies** — cache-first for hashed assets and version-pinned CDN (cdn.jsdelivr.net); stale-while-revalidate for Google Fonts and static images; network-first for HTML navigation.
 - **[ui] PWA — `Link: rel=preload` response headers** — `serve_https.py` parses the built HTML and emits preload hints for critical JS/CSS chunks on every page response; browser fetches assets in parallel without waiting for HTML parsing.
