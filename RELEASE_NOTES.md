@@ -7,6 +7,10 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### UPnP renderer — seeking within a Qobuz track
+
+UPnP renderers can now seek mid-track within a Qobuz stream. The AG proxy forwards HTTP `Range` requests from the renderer to the Qobuz CDN and relays the `206 Partial Content` response, so transport position scrubbing in the renderer's own UI (or any control point) works without restarting the stream from the beginning.
+
 ### UPnP renderer — full album playback, NEXT / PREV and "Up next"
 
 When you play an album from Qobuz, Tidal or a MinimServer library to a UPnP renderer, AG now queues all tracks and chains them automatically — gapless where the renderer supports it, seamless in any case. Qobuz tracks are served through AG's internal proxy so URLs never expire, enabling both uninterrupted album play and manual navigation.
@@ -26,6 +30,10 @@ On iPhone, use Safari's Share sheet → "Add to Home Screen" as before (iOS does
 If you lose your network connection while Audiogravity is open, the player now keeps showing the last known track and source instead of going blank. A small **Offline** label appears in the source row to make the stale state explicit.
 
 On a cold reload (opening the app while offline), the last known player state is restored from local cache — so you can still see what was playing last, even without a live connection to the streamer.
+
+### UPnP renderer — reliable state after restart
+
+After an AG backend restart, the renderer badge now snaps back to the correct state (PLAYING / STOPPED) within seconds instead of waiting up to 30 s. Previously, the renderer kept sending events with a stale subscription ID that the restarted backend didn't recognise — the events were silently dropped, leaving the badge in a stale state until the next heartbeat. The backend now detects the mismatch, re-subscribes immediately, and refreshes the display.
 
 ### UPnP renderer — live status indicator
 
