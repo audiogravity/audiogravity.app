@@ -10,6 +10,9 @@ and this landing) are documented here. Format based on
 ## [Unreleased]
 
 ### Added
+- **[core] UPnP renderer — multi-track queue playback** — `play_queue()` sends a full album to the renderer via `SetAVTransportURI` + `SetNextAVTransportURI` (gapless pre-loading where supported). Tracks are chained automatically: end-of-track detection via NOTIFY polling, `_advance_queue()` re-resolves Qobuz HMAC-signed CDN URLs just-in-time. Supports Qobuz, Tidal and UPnP/MinimServer albums.
+- **[core] UPnP renderer — `RendererStatus` queue fields** — `queue_position` (0-based index), `queue_total`, `queue_next_title`, `queue_next_artist`, `queue_next_album`, `queue_next_cover_token` exposed in `GET /upnp-renderer/status` and `renderer_status` SSE event.
+- **[ui] fullscreen player — "Up next" for renderer queue** — when a renderer queue is active, the "Up next" strip below the controls shows the next track's title, artist and cover art, updated in real time via the `renderer_status` SSE event (no MPD queue call needed).
 - **[core/ui] UPnP renderer — bypass mode** — new toggle in the Settings renderer card keeps the renderer connected (SUBSCRIBE active) but suspends audio routing to MPD. Enabling bypass stops the renderer immediately; disabling does not auto-restart. Badge `→ name` disappears from the player when bypassed. Endpoint: `PUT /upnp-renderer/bypass` body `{bypassed: bool}`. Field `bypassed` added to `RendererStatus`.
 - **[core] Push notifications — temperature and service-down alerts** — `notify_temperature_alert()` fires when CPU exceeds 85°C (15-min cooldown, cooldown not consumed on push failure); `notify_service_down()` fires on `active → failed` systemd state transition (stale states pruned each cycle to prevent false positives on re-registration).
 - **[ui] PWA — App Shell precaching** — vite-plugin-pwa (injectManifest) precaches all Vite-hashed JS/CSS/image assets at SW install (~1 MiB); first load after install is fully offline-capable on Chrome/Android.
@@ -21,6 +24,7 @@ and this landing) are documented here. Format based on
 - **[ui] PWA — `apple-mobile-web-app-title`** — short label for the iOS home screen icon.
 
 ### Fixed
+- **[core] UPnP renderer — spurious URI-change detection after explicit play** — after `_advance_queue()` started a track explicitly (STOPPED path), `_prev_track_uri` was not updated; the incoming PLAYING NOTIFY for that track was misidentified as a natural track-to-track transition, double-advancing the queue index and causing the queue to stop after the first transition. Fixed by anchoring `_prev_track_uri` to the URI just played.
 - **[core/ui] UPnP renderer — reachability tracking** — renderer card now shows 🟠 Unreachable when the device goes offline (2 consecutive heartbeat failures) and recovers to 🟢 Connected automatically when it comes back. Heartbeat uses `do_ping=True` to detect failures in SUBSCRIBE mode (where `do_ping=False` processes cached NOTIFY events and never fails). Field `reachable` added to `RendererStatus`.
 - **[core] UPnP renderer — auto-reconnect retry loop** — on backend startup, auto-reconnect now retries with exponential backoff (30 s → 60 s → … → 5 min ceiling) instead of giving up after one attempt. Stops when the user disconnects explicitly.
 - **[ui] UPnP renderer — `renderer_status` SSE event missing from worker** — `sse-worker.js` did not register a listener for `renderer_status` events, so the renderer card never received real-time status updates; it only reflected correct state after a page refresh. One-line fix.

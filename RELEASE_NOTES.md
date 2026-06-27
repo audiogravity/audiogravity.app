@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+### UPnP renderer — full album playback and "Up next"
+
+When you play an album from Qobuz, Tidal or a MinimServer library to a UPnP renderer, AG now queues all tracks and chains them automatically — gapless where the renderer supports it, seamless in any case. Tracks are resolved just-in-time (Qobuz HMAC-signed URLs stay fresh), so the whole album plays through without interruption.
+
+The fullscreen player shows a **Up next** strip at the bottom with the next track's title, artist and cover art, updated in real time as the album progresses.
+
 ### Install on your home screen (Android / Chrome)
 
 On Android, Chrome will now offer a compact **Install** banner at the bottom of the screen when Audiogravity is eligible for installation as a standalone app. Tap **Install** to add it to your home screen — the app then opens full-screen without the browser chrome, exactly like a native app. Dismissing the banner suppresses it for 30 days.
