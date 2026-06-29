@@ -7,6 +7,12 @@ Synthesized overview of each release. For the full line-by-line changelog, see
 
 ## Unreleased
 
+_Nothing yet._
+
+---
+
+## 0.9.8 — 2026-06-29
+
 ### Signal path — the real audio chain, in real time
 
 The fullscreen player now shows the full audio chain as it actually exists at any moment, not a static topology.

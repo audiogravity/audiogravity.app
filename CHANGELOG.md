@@ -9,6 +9,8 @@ and this landing) are documented here. Format based on
 
 ## [Unreleased]
 
+## [0.9.8] - 2026-06-29
+
 ### Added
 - **[core] UPnP renderer — DSD detection** — `RendererStatus.format` is set to `"DSD"` when the current URI has a `.dsf` or `.dff` extension (MinimServer DSD tracks). `PlayerState.format` is populated for native renderers so the fullscreen player shows the DSD lock and hides the volume control automatically via the existing `isDsd()` check.
 - **[core] `RendererStatus.renderer_udn`** — new field on `RendererStatus` mirroring the value already injected into the SSE payload; the UI now has the UDN from the HTTP GET response without waiting for the first SSE event.

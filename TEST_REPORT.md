@@ -1,14 +1,14 @@
 # Audiogravity — Test Report
 
-Generated: **2026-06-26 11:14 UTC**
+Generated: **2026-06-29 13:00 UTC**
 
 ## Summary
 
 | | Tests | Passed | Failed | Skipped | Duration |
 |---|---:|---:|---:|---:|---:|
-| **core** PASS | 610 | 610 | 0 | 0 | 34.3s |
-| **ui** PASS | 218 | 218 | 0 | 0 | 0.6s |
-| **Total** PASS | **828** | **828** | **0** | **0** | **35.0s** |
+| **core** PASS | 781 | 781 | 0 | 0 | 50.7s |
+| **ui** PASS | 284 | 284 | 0 | 0 | 0.6s |
+| **Total** PASS | **1065** | **1065** | **0** | **0** | **51.3s** |
 
 ## Detail
 
@@ -17,11 +17,11 @@ Generated: **2026-06-26 11:14 UTC**
 **tests.test_app**
 
   - [+] test_coreapp_uses_default_json_response_class (0.01s)
-  - [+] test_responses_serialize_to_json (0.07s)
+  - [+] test_responses_serialize_to_json
 
 **tests.test_audio_app_config.TestAudioAppConfig**
 
-  - [+] test_services_route (0.17s)
+  - [+] test_services_route (0.12s)
 
 **tests.test_audio_app_config.TestResolveConfigPath**
 
@@ -127,7 +127,7 @@ Generated: **2026-06-26 11:14 UTC**
   - [+] test_devices_response_shape
   - [+] test_devices_returns_empty_when_no_proc
   - [+] test_force_refresh_param_accepted
-  - [+] test_mock_route_via_conftest_fixture (0.01s)
+  - [+] test_mock_route_via_conftest_fixture
 
 **tests.test_audio_pipeline.TestAudioPipeline**
 
@@ -207,40 +207,40 @@ Generated: **2026-06-26 11:14 UTC**
 
 **tests.test_auth.TestLogin**
 
-  - [+] test_login_valid (0.43s)
-  - [+] test_login_wrong_password (0.38s)
-  - [+] test_login_unknown_user (0.38s)
+  - [+] test_login_valid (0.41s)
+  - [+] test_login_wrong_password (0.40s)
+  - [+] test_login_unknown_user (0.40s)
 
 **tests.test_auth.TestUsersCRUD**
 
   - [+] test_list_users (0.02s)
-  - [+] test_create_and_delete_user (0.39s)
-  - [+] test_update_user_role (0.39s)
+  - [+] test_create_and_delete_user (0.40s)
+  - [+] test_update_user_role (0.45s)
   - [+] test_cannot_delete_self (0.02s)
 
 **tests.test_auth.TestProtectedFlag**
 
   - [+] test_user_model_has_protected_field
-  - [+] test_create_user_accepts_protected_flag (0.52s)
-  - [+] test_unprotected_user_has_protected_false_by_default (0.39s)
-  - [+] test_delete_guard_rejects_protected (0.36s)
-  - [+] test_update_disable_guard_rejects_protected (0.36s)
-  - [+] test_cannot_delete_self (0.01s)
-  - [+] test_unprotected_account_can_be_deleted (0.38s)
-  - [+] test_unprotected_account_can_be_disabled (0.38s)
+  - [+] test_create_user_accepts_protected_flag (0.38s)
+  - [+] test_unprotected_user_has_protected_false_by_default (0.37s)
+  - [+] test_delete_guard_rejects_protected (0.37s)
+  - [+] test_update_disable_guard_rejects_protected (0.39s)
+  - [+] test_cannot_delete_self (0.02s)
+  - [+] test_unprotected_account_can_be_deleted (0.39s)
+  - [+] test_unprotected_account_can_be_disabled (0.40s)
 
 **tests.test_auth.TestCreateUserReturns201**
 
-  - [+] test_create_user_returns_201 (0.39s)
+  - [+] test_create_user_returns_201 (0.41s)
 
 **tests.test_auth.TestUpdateUserEmptyPassword**
 
-  - [+] test_short_password_rejected_by_pydantic (0.39s)
-  - [+] test_whitespace_only_password_rejected (0.38s)
+  - [+] test_short_password_rejected_by_pydantic (0.40s)
+  - [+] test_whitespace_only_password_rejected (0.45s)
 
 **tests.test_auth.TestDisabledUserLogin**
 
-  - [+] test_disabled_user_cannot_login (0.78s)
+  - [+] test_disabled_user_cannot_login (0.79s)
 
 **tests.test_auth.TestJwtContainsJti**
 
@@ -248,12 +248,12 @@ Generated: **2026-06-26 11:14 UTC**
 
 **tests.test_auth.TestCreateUserWhitespacePassword**
 
-  - [+] test_whitespace_only_password_rejected_on_create (0.01s)
-  - [+] test_normal_password_accepted_on_create (0.40s)
+  - [+] test_whitespace_only_password_rejected_on_create (0.02s)
+  - [+] test_normal_password_accepted_on_create (0.39s)
 
 **tests.test_auth.TestDisabledUserTimingOracle**
 
-  - [+] test_disabled_user_returns_401 (0.75s)
+  - [+] test_disabled_user_returns_401 (0.78s)
 
 **tests.test_auth.TestWebAuthnChallengeIsolation**
 
@@ -262,7 +262,7 @@ Generated: **2026-06-26 11:14 UTC**
 
 **tests.test_auth.TestUpdateUserReturnsUpdatedState**
 
-  - [+] test_update_returns_new_role (0.38s)
+  - [+] test_update_returns_new_role (0.40s)
 
 **tests.test_config_validation.TestConfigValidation**
 
@@ -331,6 +331,17 @@ Generated: **2026-06-26 11:14 UTC**
   - [+] test_disconnect_timeout_does_not_raise
   - [+] test_disconnect_clears_state_on_exception
 
+**tests.test_core.TestRoonServiceGating**
+
+  - [+] test_connect_skips_when_roonbridge_inactive
+  - [+] test_connect_proceeds_when_roonbridge_active (5.08s)
+  - [+] test_connect_proceeds_when_dbus_unavailable (5.06s)
+  - [+] test_sync_connect_creates_roon_api_when_reachable
+  - [+] test_sync_connect_skips_roon_api_when_core_unreachable
+  - [+] test_sync_connect_skips_discovery_when_core_unreachable
+  - [+] test_is_roon_reachable_returns_false_when_refused
+  - [+] test_is_roon_reachable_returns_true_when_connected
+
 **tests.test_dbus_client.TestUnwrapVariant**
 
   - [+] test_native_values_passthrough
@@ -373,7 +384,7 @@ Generated: **2026-06-26 11:14 UTC**
   - [+] test_filters (0.03s)
   - [+] test_shapers (0.03s)
   - [+] test_modes (0.03s)
-  - [+] test_discover (0.03s)
+  - [+] test_discover (0.04s)
 
 **tests.test_hqplayer.TestHQPlayerStop**
 
@@ -382,9 +393,9 @@ Generated: **2026-06-26 11:14 UTC**
 
 **tests.test_hqplayer.TestHQPlayerLiteralValidation**
 
-  - [+] test_invalid_item_type_returns_422 (0.04s)
-  - [+] test_invalid_action_returns_422 (0.03s)
-  - [+] test_valid_item_type_accepted (0.03s)
+  - [+] test_invalid_item_type_returns_422 (0.03s)
+  - [+] test_invalid_action_returns_422 (0.06s)
+  - [+] test_valid_item_type_accepted (0.14s)
 
 **tests.test_hqplayer.TestHQPlayerHasDspConfig**
 
@@ -425,19 +436,19 @@ Generated: **2026-06-26 11:14 UTC**
 
 **tests.test_hqplayer.TestNaaAvailableInConnection**
 
-  - [+] test_naa_available_true_when_service_active (0.03s)
+  - [+] test_naa_available_true_when_service_active (0.06s)
   - [+] test_naa_available_false_when_service_inactive (0.03s)
 
 **tests.test_hqplayer.TestHQPlayerPlayValidation**
 
   - [+] test_play_without_path_or_uri_returns_400 (0.03s)
-  - [+] test_play_with_uri_accepted (0.04s)
+  - [+] test_play_with_uri_accepted (0.03s)
 
 **tests.test_library.TestLibrary**
 
   - [+] test_upnp_known_servers_route_exists (0.06s)
-  - [+] test_search_route_exists (0.06s)
-  - [+] test_queue_route_exists (0.07s)
+  - [+] test_search_route_exists (0.07s)
+  - [+] test_queue_route_exists (0.06s)
 
 **tests.test_library.TestUpnpSearchTrackId**
 
@@ -450,7 +461,7 @@ Generated: **2026-06-26 11:14 UTC**
 
   - [+] test_track_add_calls_mpd_add
   - [+] test_track_play_uses_mpd_batch_with_clear
-  - [+] test_no_mpd_port_raises (0.01s)
+  - [+] test_no_mpd_port_raises
   - [+] test_album_no_known_server_raises
   - [+] test_album_browses_children_and_adds_all
   - [+] test_album_play_clears_queue
@@ -459,8 +470,8 @@ Generated: **2026-06-26 11:14 UTC**
 
 **tests.test_library.TestUpnpQueueRouting**
 
-  - [+] test_upnp_source_routes_to_upnp_queue (0.06s)
-  - [+] test_mpd_source_still_routes_to_mpd_queue (0.06s)
+  - [+] test_upnp_source_routes_to_upnp_queue (0.07s)
+  - [+] test_mpd_source_still_routes_to_mpd_queue (0.16s)
 
 **tests.test_library.TestQueueRequestValidation**
 
@@ -480,7 +491,7 @@ Generated: **2026-06-26 11:14 UTC**
 
 **tests.test_library.TestUpnpContentDirectoryClient**
 
-  - [+] test_browse_delegates_to_dms (0.02s)
+  - [+] test_browse_delegates_to_dms
   - [+] test_browse_uses_location_not_control_url
   - [+] test_parse_duration_valid
   - [+] test_parse_duration_invalid
@@ -501,10 +512,11 @@ Generated: **2026-06-26 11:14 UTC**
 
 **tests.test_library.TestQobuzQueueRenderer**
 
-  - [+] test_track_play_routes_to_renderer
+  - [+] test_track_play_routes_to_renderer (0.03s)
   - [+] test_add_bypasses_renderer_goes_to_mpd
   - [+] test_no_renderer_uses_mpd
-  - [+] test_album_sends_first_track_only (0.01s)
+  - [+] test_album_queues_all_tracks_via_play_queue
+  - [+] test_album_proxy_url_is_lan_reachable
 
 **tests.test_library.TestTidalQueueRenderer**
 
@@ -513,24 +525,30 @@ Generated: **2026-06-26 11:14 UTC**
   - [+] test_no_renderer_uses_mpd
   - [+] test_tidal_proxy_url_local_only_false_uses_lan_ip
 
+**tests.test_library.TestGetRendererServiceBypass**
+
+  - [+] test_active_renderer_is_returned
+  - [+] test_no_active_service_returns_none
+  - [+] test_no_dmr_returns_none
+
 **tests.test_license.TestGetStatus**
 
-  - [+] test_no_license (0.06s)
-  - [+] test_valid_lifetime_license (0.05s)
-  - [+] test_beta_version_accepts_v1_scope (0.04s)
-  - [+] test_version_expired (0.04s)
-  - [+] test_tampered_license (0.04s)
+  - [+] test_no_license (0.04s)
+  - [+] test_valid_lifetime_license (0.04s)
+  - [+] test_beta_version_accepts_v1_scope (0.05s)
+  - [+] test_version_expired (0.06s)
+  - [+] test_tampered_license (0.05s)
 
 **tests.test_license.TestUploadLicense**
 
-  - [+] test_upload_valid_lic (0.05s)
+  - [+] test_upload_valid_lic (0.06s)
   - [+] test_upload_invalid_signature (0.01s)
 
 **tests.test_license.TestDeleteLicense**
 
-  - [+] test_delete_existing_license (0.04s)
-  - [+] test_delete_wrong_password (0.01s)
-  - [+] test_delete_no_license (0.01s)
+  - [+] test_delete_existing_license (0.06s)
+  - [+] test_delete_wrong_password (0.02s)
+  - [+] test_delete_no_license (0.02s)
   - [+] test_no_name_error (0.05s)
 
 **tests.test_license.TestVerifyHeaders**
@@ -570,7 +588,7 @@ Generated: **2026-06-26 11:14 UTC**
 
 **tests.test_license.TestActivateEndpointLicContentValidation**
 
-  - [+] test_non_json_lic_content_returns_502 (0.01s)
+  - [+] test_non_json_lic_content_returns_502 (0.02s)
 
 **tests.test_license.TestAnnouncementModel**
 
@@ -604,6 +622,9 @@ Generated: **2026-06-26 11:14 UTC**
   - [+] test_upnp_url_with_tidal_stream_in_path_is_tidal
   - [+] test_tidal_stream_in_query_not_matched
   - [+] test_eid_in_url_path_not_matched_as_qobuz
+  - [+] test_qobuz_proxy_url_returns_qobuz_key
+  - [+] test_qobuz_proxy_key_stable_across_hosts_and_api_keys
+  - [+] test_qobuz_proxy_url_not_confused_with_eid
   - [+] test_plain_upnp_url_returns_url_as_key
   - [+] test_local_file_returns_path_as_key
 
@@ -654,7 +675,7 @@ Generated: **2026-06-26 11:14 UTC**
 
 **tests.test_packages.TestScriptInstallerStdin**
 
-  - [+] test_install_feeds_affirmative_stdin
+  - [+] test_install_feeds_affirmative_stdin (0.01s)
 
 **tests.test_packages.TestRoonRegistryUninstall**
 
@@ -665,7 +686,7 @@ Generated: **2026-06-26 11:14 UTC**
 
 **tests.test_packages.TestOsResolverStandalone**
 
-  - [+] test_runs_standalone_without_package_context (7.61s)
+  - [+] test_runs_standalone_without_package_context (7.84s)
 
 **tests.test_packages.TestArchFallback**
 
@@ -775,20 +796,70 @@ Generated: **2026-06-26 11:14 UTC**
   - [+] test_none_source_format_and_codec_returns_null_format
   - [+] test_codec_only_no_source_format_no_crash
 
+**tests.test_player.TestBuildStateSignalPathEnrichment**
+
+  - [+] test_connector_inserted_before_dac
+  - [+] test_renderer_prepended_when_active
+  - [+] test_no_renderer_step_when_no_active_service
+  - [+] test_source_prepended_from_origin
+  - [+] test_full_chain_renderer_active
+  - [+] test_full_chain_no_renderer
+  - [+] test_radio_shows_canonical_label_not_station_name
+  - [+] test_upnp_uses_server_name_from_origin_name
+  - [+] test_upnp_falls_back_to_upnp_label_when_no_server_name
+  - [+] test_native_renderer_signal_path_ends_at_renderer
+  - [+] test_native_renderer_with_source_prepended
+  - [+] test_renderer_unreachable_does_not_appear_in_signal_path
+
+**tests.test_player.TestTryRendererControl**
+
+  - [+] test_toggle_pauses_when_playing
+  - [+] test_toggle_resumes_when_stopped
+  - [+] test_returns_false_for_local_mpd_renderer
+  - [+] test_returns_false_when_no_active_renderer
+  - [+] test_next_calls_advance_queue
+  - [+] test_set_volume_calls_renderer_set_volume
+  - [+] test_unknown_action_returns_false
+
+**tests.test_player.TestBuildNativeRendererState**
+
+  - [+] test_native_renderer_active_returns_state
+  - [+] test_local_mpd_renderer_returns_none
+  - [+] test_renderer_not_reachable_returns_none
+  - [+] test_no_active_renderer_returns_none
+  - [+] test_playing_transport_state_maps_correctly
+  - [+] test_paused_transport_state_maps_correctly
+  - [+] test_can_next_true_when_not_at_last_track
+  - [+] test_can_next_false_at_last_track
+
 **tests.test_player.TestPlayer**
 
-  - [+] test_snapshot (0.01s)
-  - [+] test_control (0.01s)
-  - [+] test_sleep_timer_get (0.01s)
+  - [+] test_snapshot (0.02s)
+  - [+] test_control (0.02s)
+  - [+] test_origins_returns_all_known_keys (0.02s)
+  - [+] test_sleep_timer_get (0.02s)
+
+**tests.test_player.TestGetOutputs**
+
+  - [+] test_returns_mpd_and_renderer_outputs (0.02s)
+  - [+] test_local_active_true_when_no_renderer (0.02s)
+  - [+] test_local_active_false_when_renderer_reachable (0.02s)
+  - [+] test_local_active_true_when_renderer_not_reachable (0.02s)
+
+**tests.test_player.TestSelectMpdOutput**
+
+  - [+] test_switch_succeeds (0.02s)
+  - [+] test_unknown_output_id_returns_404 (0.02s)
+  - [+] test_stale_active_udn_cleared_not_raised (0.02s)
 
 **tests.test_profiles.TestActivateProfile**
 
-  - [+] test_activate (0.07s)
-  - [+] test_deactivate (0.03s)
+  - [+] test_activate (0.08s)
+  - [+] test_deactivate (0.02s)
 
 **tests.test_profiles.TestProfilesGatherTimeout**
 
-  - [+] test_stop_timeout_does_not_raise (0.02s)
+  - [+] test_stop_timeout_does_not_raise
 
 **tests.test_profiles.TestStoppedCountFailedLogic**
 
@@ -804,7 +875,7 @@ Generated: **2026-06-26 11:14 UTC**
 
 **tests.test_push.TestSubscribe**
 
-  - [+] test_subscribe (0.10s)
+  - [+] test_subscribe (0.01s)
 
 **tests.test_push.TestUnsubscribe**
 
@@ -812,7 +883,7 @@ Generated: **2026-06-26 11:14 UTC**
 
 **tests.test_push.TestGenerateVapidKeysScript**
 
-  - [+] test_script_produces_valid_keys (0.08s)
+  - [+] test_script_produces_valid_keys (0.09s)
 
 **tests.test_push.TestRegisterLoadsVapidJson**
 
@@ -831,7 +902,17 @@ Generated: **2026-06-26 11:14 UTC**
 
 **tests.test_push.TestPushUnsubscribeQueryParam**
 
-  - [+] test_endpoint_is_query_param
+  - [+] test_endpoint_is_query_param (0.01s)
+
+**tests.test_push.TestServiceDownPushHook**
+
+  - [+] test_transition_active_to_failed_detected
+  - [+] test_no_alert_on_first_appearance_as_failed
+  - [+] test_no_alert_on_active_to_active
+  - [+] test_stale_state_pruned_when_service_disappears
+  - [+] test_no_false_positive_after_prune_and_reappearance
+  - [+] test_label_uses_systemd_unit_name
+  - [+] test_label_fallback_to_service_id
 
 **tests.test_qobuz.TestBundleExtractAppId**
 
@@ -871,12 +952,18 @@ Generated: **2026-06-26 11:14 UTC**
 **tests.test_qobuz.TestQobuzRouter**
 
   - [+] test_get_connection_connected
-  - [+] test_delete_connection
+  - [+] test_delete_connection (0.01s)
   - [+] test_get_connection_after_disconnect
-  - [+] test_oauth_callback_no_code
+  - [+] test_oauth_callback_no_code (0.01s)
   - [+] test_oauth_callback_with_code
-  - [+] test_oauth_callback_failure
+  - [+] test_oauth_callback_failure (0.01s)
   - [+] test_post_connection_starts_oauth
+
+**tests.test_qobuz.TestQobuzStreamProxy**
+
+  - [+] test_stream_full_returns_200 (0.01s)
+  - [+] test_stream_range_request_relayed_to_cdn (0.01s)
+  - [+] test_stream_cdn_error_raises_503 (0.01s)
 
 **tests.test_qobuz.TestQobuzRotation**
 
@@ -891,6 +978,13 @@ Generated: **2026-06-26 11:14 UTC**
   - [+] test_handle_callback_returns_false_when_no_secret
   - [+] test_user_id_is_none_when_json_id_is_null
   - [+] test_user_id_is_none_when_id_key_absent
+
+**tests.test_qobuz.TestGetStreamUrl**
+
+  - [+] test_raises_when_not_connected
+  - [+] test_happy_path_returns_cdn_url
+  - [+] test_non_200_raises_runtime_error
+  - [+] test_missing_url_in_response_raises
 
 **tests.test_qobuz_library.TestQobuzCover**
 
@@ -925,12 +1019,12 @@ Generated: **2026-06-26 11:14 UTC**
 
 **tests.test_qobuz_library.TestQobuzLibraryRouter**
 
-  - [+] test_featured_albums (0.06s)
-  - [+] test_featured_albums_default_type (0.07s)
-  - [+] test_playlists (0.09s)
-  - [+] test_playlist_tracks (0.06s)
-  - [+] test_playlist_tracks_missing_id (0.06s)
-  - [+] test_featured_service_error (0.07s)
+  - [+] test_featured_albums (0.07s)
+  - [+] test_featured_albums_default_type (0.06s)
+  - [+] test_playlists (0.06s)
+  - [+] test_playlist_tracks (0.07s)
+  - [+] test_playlist_tracks_missing_id (0.07s)
+  - [+] test_featured_service_error (0.06s)
 
 **tests.test_qobuz_library.TestQobuzQueueHelper**
 
@@ -940,13 +1034,13 @@ Generated: **2026-06-26 11:14 UTC**
 
 **tests.test_radio.TestRadio**
 
-  - [+] test_search_route (0.04s)
+  - [+] test_search_route (0.05s)
   - [+] test_library_route (0.03s)
-  - [+] test_favorites_route (0.03s)
+  - [+] test_favorites_route (0.04s)
 
 **tests.test_radio.TestRadioEditStation**
 
-  - [+] test_edit_station_returns_updated_station (0.03s)
+  - [+] test_edit_station_returns_updated_station (0.04s)
   - [+] test_edit_station_404_when_not_saved (0.03s)
 
 **tests.test_radio.TestRadioSavedStationDatetime**
@@ -966,26 +1060,74 @@ Generated: **2026-06-26 11:14 UTC**
   - [+] test_remove_from_library_returns_false_when_not_in_library
   - [+] test_remove_favorite_keeps_entry_if_still_in_library
 
+**tests.test_radio.TestRadioPlayRendererRouting**
+
+  - [+] test_play_routes_to_renderer_when_active
+  - [+] test_play_cover_token_none_when_no_favicon
+  - [+] test_play_uses_mpd_when_no_renderer_active
+  - [+] test_play_uses_mpd_when_no_manager_bound
+  - [+] test_play_propagates_renderer_error_without_mpd_fallback
+
+**tests.test_renderer_manager.TestLoadConfig**
+
+  - [+] test_no_config_file_leaves_empty_state
+  - [+] test_reads_known_renderers
+  - [+] test_active_flag_sets_active_udn
+  - [+] test_only_first_active_entry_wins
+  - [+] test_migration_from_legacy_config
+  - [+] test_migration_skipped_when_new_config_exists
+
+**tests.test_renderer_manager.TestGetKnown**
+
+  - [+] test_no_service_reachable_false
+  - [+] test_live_reachable_from_service
+
+**tests.test_renderer_manager.TestGetService**
+
+  - [+] test_get_service_raises_for_unknown_udn
+  - [+] test_get_service_returns_registered_service
+  - [+] test_get_active_service_none_when_no_active_udn
+  - [+] test_get_active_service_none_when_service_not_instantiated
+  - [+] test_get_active_service_returns_active
+
+**tests.test_renderer_manager.TestNotifyUrl**
+
+  - [+] test_notify_url_includes_udn
+  - [+] test_trailing_slash_stripped_from_base
+
+**tests.test_renderer_manager.TestConnect**
+
+  - [+] test_connect_sets_active_udn
+  - [+] test_connect_calls_svc_connect
+  - [+] test_connect_stops_previous_active
+  - [+] test_connect_upserts_known_list
+
+**tests.test_renderer_manager.TestDisconnect**
+
+  - [+] test_disconnect_raises_for_unknown_udn
+  - [+] test_disconnect_clears_active_udn
+  - [+] test_disconnect_keeps_renderer_in_known
+
 **tests.test_services.TestListServices**
 
-  - [+] test_list_all (0.04s)
+  - [+] test_list_all (0.05s)
 
 **tests.test_services.TestServiceInfo**
 
-  - [+] test_get_service (0.03s)
+  - [+] test_get_service (0.04s)
 
 **tests.test_services.TestServiceActions**
 
-  - [+] test_restart_service (0.03s)
+  - [+] test_restart_service (0.04s)
   - [+] test_stop_service (0.04s)
-  - [+] test_start_service (0.03s)
+  - [+] test_start_service (0.04s)
 
 **tests.test_services.TestServiceNameValidation**
 
   - [+] test_valid_name_accepted (0.04s)
   - [+] test_semicolon_rejected (0.04s)
-  - [+] test_slash_rejected (0.03s)
-  - [+] test_ampersand_rejected (0.03s)
+  - [+] test_slash_rejected (0.04s)
+  - [+] test_ampersand_rejected (0.05s)
 
 **tests.test_services.TestEnumComparison**
 
@@ -998,7 +1140,7 @@ Generated: **2026-06-26 11:14 UTC**
 
 **tests.test_services.TestIsServiceActive**
 
-  - [+] test_returns_true_when_active
+  - [+] test_returns_true_when_active (0.10s)
   - [+] test_returns_false_when_inactive
   - [+] test_appends_service_suffix
   - [+] test_returns_false_on_dbus_error
@@ -1024,6 +1166,12 @@ Generated: **2026-06-26 11:14 UTC**
   - [+] test_absent_services_excluded
   - [+] test_installed_services_included
 
+**tests.test_steering.TestRendererPreDisconnect**
+
+  - [+] test_local_renderer_disconnected_before_alsa_switch (1.51s)
+  - [+] test_native_renderer_not_disconnected (1.51s)
+  - [+] test_no_active_renderer_switch_proceeds (1.51s)
+
 **tests.test_steering.TestVerifyAlsaDevice**
 
   - [+] test_returns_false_when_pcm_missing
@@ -1031,7 +1179,7 @@ Generated: **2026-06-26 11:14 UTC**
 
 **tests.test_sysinfo.TestMetrics**
 
-  - [+] test_metrics (0.04s)
+  - [+] test_metrics (0.05s)
 
 **tests.test_sysinfo.TestDetectCpuModel**
 
@@ -1047,11 +1195,18 @@ Generated: **2026-06-26 11:14 UTC**
 **tests.test_sysinfo.TestSysinfoGrepPatternValidation**
 
   - [+] test_invalid_regex_returns_400 (0.02s)
-  - [+] test_valid_regex_accepted (0.26s)
+  - [+] test_valid_regex_accepted (0.19s)
 
 **tests.test_sysinfo.TestSysinfoSyslogIdentifierFormat**
 
   - [+] test_correct_format_in_service
+
+**tests.test_sysinfo.TestTemperaturePushAlert**
+
+  - [+] test_cooldown_not_updated_when_push_raises
+  - [+] test_cooldown_below_threshold_no_alert
+  - [+] test_cooldown_prevents_second_alert_within_15min
+  - [+] test_alert_allowed_after_cooldown_elapsed
 
 **tests.test_tidal.TestTidalServicePersistence**
 
@@ -1121,7 +1276,7 @@ Generated: **2026-06-26 11:14 UTC**
 
 **tests.test_tidal_library.TestTidalQueue**
 
-  - [+] test_single_track_builds_proxy_url_and_registers_meta (0.02s)
+  - [+] test_single_track_builds_proxy_url_and_registers_meta
 
 **tests.test_tidal_library.TestExtStreamKey**
 
@@ -1191,6 +1346,7 @@ Generated: **2026-06-26 11:14 UTC**
   - [+] test_load_config_valid
   - [+] test_load_config_invalid_json
   - [+] test_disconnect_clears_state_and_config
+  - [+] test_disconnect_calls_async_stop_before_unsubscribe
 
 **tests.test_upnp_renderer.TestRendererServicePlayback**
 
@@ -1208,6 +1364,15 @@ Generated: **2026-06-26 11:14 UTC**
 
   - [+] test_status_no_dmr_returns_disconnected
   - [+] test_status_with_dmr_returns_state
+  - [+] test_status_exposes_queue_next_track
+  - [+] test_status_queue_next_is_none_at_end
+  - [+] test_status_cover_token_from_active_queue_entry
+  - [+] test_status_cover_token_none_when_no_queue
+  - [+] test_status_can_seek_true_when_abs_time_supported
+  - [+] test_status_can_seek_false_when_unsupported
+  - [+] test_status_dsd_uri_sets_format
+  - [+] test_status_pcm_uri_format_is_none
+  - [+] test_status_queue_fields_none_when_no_queue
 
 **tests.test_upnp_renderer.TestMinimalDidl**
 
@@ -1222,6 +1387,9 @@ Generated: **2026-06-26 11:14 UTC**
   - [+] test_publish_skipped_when_no_event_bus
   - [+] test_disconnect_event_not_suppressed_by_previous_hash
   - [+] test_on_dmr_event_coalesces_publish_tasks
+  - [+] test_on_dmr_event_calls_check_queue_advance
+  - [+] test_publish_status_force_always_publishes_and_updates_hash
+  - [+] test_publish_status_force_then_nonforce_dedup_works
 
 **tests.test_upnp_renderer.TestSsdpTargetsRenderer**
 
@@ -1229,10 +1397,94 @@ Generated: **2026-06-26 11:14 UTC**
 
 **tests.test_upnp_renderer.TestRendererRouterEndpoints**
 
-  - [+] test_discover_route_exists (0.02s)
-  - [+] test_connection_route_exists (0.02s)
-  - [+] test_status_route_exists (0.02s)
-  - [+] test_notify_route_exists (0.03s)
+  - [+] test_discover_route_exists (0.04s)
+  - [+] test_known_route_exists (0.04s)
+  - [+] test_connection_route_exists (0.04s)
+  - [+] test_status_route_exists (0.04s)
+  - [+] test_notify_route_exists (0.04s)
+  - [+] test_bypass_route_removed (0.04s)
+  - [+] test_remove_renderer_route_exists (0.04s)
+
+**tests.test_upnp_renderer.TestRendererManagerRemove**
+
+  - [+] test_remove_known_renderer_removes_from_list
+  - [+] test_remove_persists_config
+  - [+] test_remove_unknown_udn_is_noop
+  - [+] test_remove_active_renderer_clears_active_udn
+  - [+] test_remove_active_renderer_calls_disconnect
+
+**tests.test_upnp_renderer.TestPlayQueue**
+
+  - [+] test_play_queue_single_entry_calls_play
+  - [+] test_play_queue_empty_is_noop
+  - [+] test_play_queue_preloads_second_track_via_set_next (0.01s)
+  - [+] test_play_queue_no_set_next_when_not_supported
+  - [+] test_play_queue_lazy_resolver_called_at_play_time
+  - [+] test_play_queue_on_play_called_with_resolved_uri
+  - [+] test_advance_queue_stopped_plays_next
+  - [+] test_advance_queue_uri_changed_registers_metadata_only
+  - [+] test_advance_queue_at_end_clears_queue
+  - [+] test_advance_queue_guard_prevents_concurrent_advances
+  - [+] test_check_queue_advance_playing_to_stopped_schedules_task
+  - [+] test_check_queue_advance_uri_change_while_playing_schedules_task
+  - [+] test_check_queue_advance_no_trigger_when_queue_empty
+  - [+] test_check_queue_advance_deduplicates_when_task_pending
+  - [+] test_check_queue_advance_creates_task_when_previous_done
+  - [+] test_stop_clears_queue
+  - [+] test_direct_play_clears_queue
+  - [+] test_advance_queue_resolver_failure_rolls_back_queue_idx
+  - [+] test_play_queue_entry_always_re_resolves_with_resolver
+  - [+] test_advance_queue_uri_changed_re_resolves_for_on_play
+  - [+] test_stop_resets_prev_transport_state_and_uri
+  - [+] test_advance_queue_stopped_anchors_prev_track_uri
+  - [+] test_advance_queue_rollback_safe_when_stop_clears_queue
+
+**tests.test_upnp_renderer.TestHandleUpdateResult**
+
+  - [+] test_success_resets_failure_counter
+  - [+] test_success_recovers_reachable_and_returns_true
+  - [+] test_failure_increments_counter
+  - [+] test_failure_flips_reachable_false_at_threshold
+  - [+] test_failure_below_threshold_does_not_flip
+  - [+] test_failure_already_unreachable_does_not_return_changed
+
+**tests.test_upnp_renderer.TestQueueNavigation**
+
+  - [+] test_advance_queue_public_plays_next_track
+  - [+] test_advance_queue_raises_at_end
+  - [+] test_advance_queue_raises_when_no_queue
+  - [+] test_retreat_queue_plays_previous_track
+  - [+] test_retreat_queue_raises_at_first_track
+  - [+] test_retreat_queue_raises_when_no_queue
+  - [+] test_retreat_queue_anchors_prev_track_uri
+
+**tests.test_upnp_renderer.TestSidMismatchRecovery**
+
+  - [+] test_handle_notify_ok_does_not_resubscribe
+  - [+] test_handle_notify_412_schedules_resubscribe
+  - [+] test_handle_notify_412_no_dmr_does_not_schedule
+  - [+] test_resubscribe_and_refresh_calls_unsubscribe_then_subscribe
+  - [+] test_resubscribe_guard_prevents_concurrent_calls (0.05s)
+  - [+] test_resubscribe_no_dmr_is_noop
+
+**tests.test_upnp_renderer.TestUsesLocalMpd**
+
+  - [+] test_default_is_true
+  - [+] test_is_local_renderer_true_for_local_ip
+  - [+] test_is_local_renderer_true_for_loopback
+  - [+] test_is_local_renderer_false_for_remote_ip
+  - [+] test_get_status_exposes_uses_local_mpd_default
+  - [+] test_get_status_exposes_uses_local_mpd_false
+
+**tests.test_upnp_renderer.TestRetreatQueueRaceGuard**
+
+  - [+] test_retreat_queue_clears_when_stop_races
+  - [+] test_retreat_queue_guard_exits_when_queue_empty_at_entry
+
+**tests.test_upnp_renderer.TestResubscribeRestoresReachability**
+
+  - [+] test_resubscribe_restores_reachable_after_successful_update
+  - [+] test_resubscribe_marks_unreachable_on_update_failure
 
 **tests.test_version**
 
@@ -1286,6 +1538,11 @@ Generated: **2026-06-26 11:14 UTC**
   - [+] escapeHtml (P1 — XSS prevention) > leaves plain text unchanged
   - [+] escapeHtml (P1 — XSS prevention) > passes through non-string values unchanged
   - [+] escapeHtml (P1 — XSS prevention) > empty string returns empty string
+  - [+] SW reload guard (sw-reloading sessionStorage key) > reloads on first controllerchange and sets guard key
+  - [+] SW reload guard (sw-reloading sessionStorage key) > does NOT reload if guard key is already set (loop prevention)
+  - [+] SW reload guard (sw-reloading sessionStorage key) > clearGuard removes the key so the next update can reload
+  - [+] SW reload guard (sw-reloading sessionStorage key) > clearGuard is idempotent when key is absent
+  - [+] SW reload guard (sw-reloading sessionStorage key) > two rapid controllerchange events only reload once
 
 **js/library-api.test.js**
 
@@ -1306,6 +1563,14 @@ Generated: **2026-06-26 11:14 UTC**
   - [+] subscribeRendererStatus > does not invoke other subscribers after one unsubscribes
   - [+] subscribeRendererStatus > ignores events with null detail
   - [+] subscribeRendererStatus > isolates callback errors — one failing callback does not prevent others
+  - [+] getOfflinePlayerSnapshot > returns null when localStorage is empty
+  - [+] getOfflinePlayerSnapshot > returns the parsed object when a valid snapshot exists
+  - [+] getOfflinePlayerSnapshot > returns null when localStorage contains malformed JSON
+  - [+] getOfflinePlayerSnapshot > returns null for empty string value
+  - [+] pwa-install-prompt dismiss persistence > banner is not dismissed when localStorage is empty
+  - [+] pwa-install-prompt dismiss persistence > sets a numeric timestamp string on dismiss
+  - [+] pwa-install-prompt dismiss persistence > is considered dismissed when timestamp is recent (< 30 days)
+  - [+] pwa-install-prompt dismiss persistence > is NOT considered dismissed when timestamp is older than 30 days
 
 **js/player-utils.test.js**
 
@@ -1321,7 +1586,7 @@ Generated: **2026-06-26 11:14 UTC**
 
 **js/push-manager.test.js**
 
-  - [+] push-manager unsubscribe (Fix P3) > calls apiDelete (not apiPost) on unsubscribe (0.19s)
+  - [+] push-manager unsubscribe (Fix P3) > calls apiDelete (not apiPost) on unsubscribe (0.09s)
   - [+] push-manager unsubscribe (Fix P3) > passes endpoint as query param in the URL
   - [+] push-manager unsubscribe (Fix P3) > URLSearchParams encodes the endpoint correctly
 
@@ -1340,7 +1605,7 @@ Generated: **2026-06-26 11:14 UTC**
 
 **js/version.test.js**
 
-  - [+] version propagation (single source: audiogravity.ops/VERSION) > VERSION is a valid semver (0.9.7)
+  - [+] version propagation (single source: audiogravity.ops/VERSION) > VERSION is a valid semver (0.9.8)
   - [+] version propagation (single source: audiogravity.ops/VERSION) > js/core/config.js FRONTEND_VERSION matches VERSION (UI display)
   - [+] version propagation (single source: audiogravity.ops/VERSION) > sw.js CACHE_NAME matches VERSION (PWA cache busting)
 
@@ -1351,6 +1616,10 @@ Generated: **2026-06-26 11:14 UTC**
   - [+] originBadge > uses the explicit name over the generic label
   - [+] originBadge > falls back to the library icon for an unknown but truthy origin
   - [+] originBadge > exposes a label for every mapped origin
+  - [+] initOriginLabels > merges new origin keys from the backend into ORIGIN_LABELS
+  - [+] initOriginLabels > overwrites existing labels with backend values
+  - [+] initOriginLabels > keeps static fallbacks intact when the backend is unreachable
+  - [+] initOriginLabels > calls GET /player/origins
   - [+] normalizeSearchSources > maps a pipeline source to {id,label,group,location}
   - [+] normalizeSearchSources > dedups Roon (src_roon + src_mono-sgen → one)
   - [+] normalizeSearchSources > drops mpris receivers (no library API)
@@ -1393,75 +1662,10 @@ Generated: **2026-06-26 11:14 UTC**
   - [+] formatTimestamp > returns "Just now" for recent timestamps
   - [+] formatTimestamp > returns Xm ago for timestamps within an hour
   - [+] formatTimestamp > returns Xh ago for timestamps within 24h
-  - [+] formatTimestamp > returns locale string for timestamps older than 24h (0.07s)
+  - [+] formatTimestamp > returns locale string for timestamps older than 24h (0.02s)
   - [+] loadConnection > sets _connection on success and clears _loading
   - [+] loadConnection > sets _connection to null on fetch failure
   - [+] loadConnection > always clears _loading even on failure
-
-**js/components/organisms/ag-audio-software-page.test.js**
-
-  - [+] Bulk-update confirm dialog — XSS prevention via escapeHtml > escapes a malicious package label
-  - [+] Bulk-update confirm dialog — XSS prevention via escapeHtml > escapes malicious version strings
-  - [+] Bulk-update confirm dialog — XSS prevention via escapeHtml > renders a normal package correctly after escaping
-  - [+] Bulk-update confirm dialog — XSS prevention via escapeHtml > handles undefined version gracefully
-
-**js/components/organisms/ag-config-editor.test.js**
-
-  - [+] AgConfigEditor.disconnectedCallback — CodeMirror cleanup > calls toTextArea() on the CodeMirror instance and nulls the reference
-  - [+] AgConfigEditor.disconnectedCallback — CodeMirror cleanup > does not throw when _cmInstance is null (never initialised)
-  - [+] AgConfigEditor.disconnectedCallback — CodeMirror cleanup > does not call toTextArea after a second disconnectedCallback
-
-**js/components/organisms/ag-library-radio.test.js**
-
-  - [+] AbortController — race condition guard > creates a new AbortController on each call
-  - [+] AbortController — race condition guard > aborts the previous controller when called a second time
-  - [+] AbortController — race condition guard > ignores results from a cancelled request (signal.aborted guard)
-  - [+] AbortController — race condition guard > clears loading flag after a successful non-aborted search
-  - [+] AbortController — race condition guard > does not clear loading flag when the request is aborted
-
-**js/components/organisms/ag-network-test.test.js**
-
-  - [+] AgNetworkTest.disconnectedCallback — jitterChart destroy (Fix P2) > destroys _jitterChart when component is disconnected (0.09s)
-  - [+] AgNetworkTest.disconnectedCallback — jitterChart destroy (Fix P2) > does not throw when _jitterChart is null
-
-**js/components/organisms/ag-now-playing-fullscreen.test.js**
-
-  - [+] AgNowPlayingFullscreen — auto-follow (_applyState) > auto-follows when the backend switches to a new active source
-  - [+] AgNowPlayingFullscreen — auto-follow (_applyState) > does not reconnect SSE when source_id already matches targetSourceId
-  - [+] AgNowPlayingFullscreen — auto-follow (_applyState) > does not auto-follow when playing is false
-  - [+] AgNowPlayingFullscreen — auto-follow (_applyState) > auto-follows across multiple source changes
-  - [+] AgNowPlayingFullscreen — auto-follow (_applyState) > _switchSource sets userOverride and updates targetSourceId
-  - [+] AgNowPlayingFullscreen — auto-follow (_applyState) > _switchSource is a no-op when already on the target source
-  - [+] AgNowPlayingFullscreen — auto-follow (_applyState) > respects override — does not auto-follow after manual navigation
-  - [+] AgNowPlayingFullscreen — auto-follow (_applyState) > override is not lifted while user-chosen source is still playing
-  - [+] AgNowPlayingFullscreen — auto-follow (_applyState) > lifts override and auto-follows when user-chosen source stops playing
-  - [+] AgNowPlayingFullscreen — auto-follow (_applyState) > lifts override and follows new active after chosen source stops
-  - [+] AgNowPlayingFullscreen — auto-follow (_applyState) > SSE reconnects once when override is lifted and source switches
-  - [+] AgNowPlayingFullscreen — auto-follow (_applyState) > immediately follows new source when override is lifted on a playing:false tick
-  - [+] AgNowPlayingFullscreen — auto-follow (_applyState) > does not crash when override lifts and no source is playing
-
-**js/components/organisms/ag-now-playing.test.js**
-
-  - [+] AgNowPlaying — auto-follow (_onState) > follows the active source on first state
-  - [+] AgNowPlaying — auto-follow (_onState) > auto-switches when the active source changes
-  - [+] AgNowPlaying — auto-follow (_onState) > stays on active source when it remains active across ticks
-  - [+] AgNowPlaying — auto-follow (_onState) > clamps index to 0 when item count shrinks (no override)
-  - [+] AgNowPlaying — auto-follow (_onState) > shows first item when no source is flagged active
-  - [+] AgNowPlaying — auto-follow (_onState) > respects override — does not auto-switch after manual navigation
-  - [+] AgNowPlaying — auto-follow (_onState) > override is not lifted while user-chosen source is still playing
-  - [+] AgNowPlaying — auto-follow (_onState) > lifts override and auto-follows when user-chosen source stops playing
-  - [+] AgNowPlaying — auto-follow (_onState) > lifts override and follows new active source after chosen source stops
-  - [+] AgNowPlaying — auto-follow (_onState) > clamping also lifts override when items shrink below user index
-  - [+] AgNowPlaying — auto-follow (_onState) > prevShownId uses old items — override is lifted when chosen source disappears even after clamp
-  - [+] AgNowPlaying — auto-follow (_onState) > dot-click sets userOverride — next auto-follow tick respects it
-
-**js/components/organisms/ag-user-modal.test.js**
-
-  - [+] AgUserModal._handleSave — password trim (Fix P3) > whitespace-only password (6 spaces) is rejected (0.02s)
-  - [+] AgUserModal._handleSave — password trim (Fix P3) > whitespace-only password (tabs) is rejected
-  - [+] AgUserModal._handleSave — password trim (Fix P3) > valid password passes validation
-  - [+] AgUserModal._handleSave — password trim (Fix P3) > password with surrounding spaces is trimmed before sending
-  - [+] AgUserModal._handleSave — password trim (Fix P3) > short username is rejected regardless of password
 
 **js/components/molecules/ag-announcement-banner.test.js**
 
@@ -1511,19 +1715,133 @@ Generated: **2026-06-26 11:14 UTC**
 
 **js/components/molecules/ag-upnp-renderer-card.test.js**
 
+  - [+] AgUpnpRendererCard._activeUdn > returns null when no renderer is active
+  - [+] AgUpnpRendererCard._activeUdn > returns the UDN of the active renderer
+  - [+] AgUpnpRendererCard._activeUdn > returns null when _known is empty
   - [+] AgUpnpRendererCard._onStatusEvent() > updates _status from SSE event
-  - [+] AgUpnpRendererCard._onStatusEvent() > updates _connection from SSE event
   - [+] AgUpnpRendererCard._onStatusEvent() > does not update _volume when volume is null in event
-  - [+] AgUpnpRendererCard._onStatusEvent() > ignores null detail
-  - [+] AgUpnpRendererCard._onStatusEvent() > stores transport_state PLAYING from SSE payload
-  - [+] AgUpnpRendererCard._onStatusEvent() > stores transport_state STOPPED from SSE payload
-  - [+] AgUpnpRendererCard._renderDiscovery() > shows scan button when not scanning
-  - [+] AgUpnpRendererCard._renderDiscovery() > shows "Scanning…" while scanning
-  - [+] AgUpnpRendererCard._renderDiscovery() > renders discovered renderers as selectable cards
-  - [+] AgUpnpRendererCard._renderDiscovery() > shows "No UPnP renderer found" when list is empty
-  - [+] AgUpnpRendererCard._renderCard() > shows Connected indicator when available
-  - [+] AgUpnpRendererCard._renderCard() > shows Offline indicator when not available
-  - [+] AgUpnpRendererCard._renderCard() > shows transport state in description
-  - [+] AgUpnpRendererCard._renderCard() > shows Disconnect button when available
-  - [+] AgUpnpRendererCard._renderCard() > shows volume popover when volume is available
-  - [+] AgUpnpRendererCard._renderCard() > does not show volume popover when volume is null
+  - [+] AgUpnpRendererCard._onStatusEvent() > ignores null payload
+  - [+] AgUpnpRendererCard._onStatusEvent() > syncs reachable in _known list
+  - [+] AgUpnpRendererCard._onStatusEvent() > clears active flag in _known when connected=false
+  - [+] AgUpnpRendererCard._onStatusEvent() > does not change other renderers reachable when connected=false
+  - [+] AgUpnpRendererCard._onStatusEvent() > clears active on all other renderers when connected=true (prevents double-active)
+  - [+] AgUpnpRendererCard._renderMpdRow() > shows Active indicator when MPD output is the active output
+  - [+] AgUpnpRendererCard._renderMpdRow() > shows Idle indicator when MPD output is not active
+  - [+] AgUpnpRendererCard._renderMpdRow() > shows Switching label while switching to this output
+  - [+] AgUpnpRendererCard._renderMpdRow() > shows the output name
+  - [+] AgUpnpRendererCard._renderRendererRow() > shows renderer name
+  - [+] AgUpnpRendererCard._renderRendererRow() > shows Active indicator when active and reachable
+  - [+] AgUpnpRendererCard._renderRendererRow() > shows Reconnecting indicator when active but not reachable
+  - [+] AgUpnpRendererCard._renderRendererRow() > shows Idle indicator when not active
+  - [+] AgUpnpRendererCard._renderRendererRow() > shows Disconnect button when active
+  - [+] AgUpnpRendererCard._renderRendererRow() > does not show Disconnect button when idle
+  - [+] AgUpnpRendererCard._renderRendererRow() > shows volume popover when active and volume available
+  - [+] AgUpnpRendererCard._renderRendererRow() > does not show volume popover when volume is null
+  - [+] AgUpnpRendererCard._renderRendererRow() > shows Switching label while switching
+  - [+] AgUpnpRendererCard._renderRendererRow() > shows transport state description when active
+  - [+] AgUpnpRendererCard._renderScanSection() > shows Scan network button when not scanning
+  - [+] AgUpnpRendererCard._renderScanSection() > shows Scanning… while scanning
+  - [+] AgUpnpRendererCard._renderScanSection() > shows discovered renderers not in known list
+  - [+] AgUpnpRendererCard._renderScanSection() > filters out renderers already in known list
+  - [+] AgUpnpRendererCard._renderScanSection() > shows "No new renderer found" when all discovered are already known
+  - [+] AgUpnpRendererCard._renderScanSection() > shows "No UPnP renderer found" when known list is empty and nothing discovered
+  - [+] AgUpnpRendererCard._renderScanSection() > shows nothing when discovered is null (before first scan)
+
+**js/components/organisms/ag-audio-software-page.test.js**
+
+  - [+] Bulk-update confirm dialog — XSS prevention via escapeHtml > escapes a malicious package label
+  - [+] Bulk-update confirm dialog — XSS prevention via escapeHtml > escapes malicious version strings
+  - [+] Bulk-update confirm dialog — XSS prevention via escapeHtml > renders a normal package correctly after escaping
+  - [+] Bulk-update confirm dialog — XSS prevention via escapeHtml > handles undefined version gracefully
+
+**js/components/organisms/ag-config-editor.test.js**
+
+  - [+] AgConfigEditor.disconnectedCallback — CodeMirror cleanup > calls toTextArea() on the CodeMirror instance and nulls the reference
+  - [+] AgConfigEditor.disconnectedCallback — CodeMirror cleanup > does not throw when _cmInstance is null (never initialised)
+  - [+] AgConfigEditor.disconnectedCallback — CodeMirror cleanup > does not call toTextArea after a second disconnectedCallback
+
+**js/components/organisms/ag-library-radio.test.js**
+
+  - [+] AbortController — race condition guard > creates a new AbortController on each call
+  - [+] AbortController — race condition guard > aborts the previous controller when called a second time
+  - [+] AbortController — race condition guard > ignores results from a cancelled request (signal.aborted guard)
+  - [+] AbortController — race condition guard > clears loading flag after a successful non-aborted search
+  - [+] AbortController — race condition guard > does not clear loading flag when the request is aborted
+
+**js/components/organisms/ag-network-test.test.js**
+
+  - [+] AgNetworkTest.disconnectedCallback — jitterChart destroy (Fix P2) > destroys _jitterChart when component is disconnected (0.15s)
+  - [+] AgNetworkTest.disconnectedCallback — jitterChart destroy (Fix P2) > does not throw when _jitterChart is null
+
+**js/components/organisms/ag-now-playing-fullscreen.test.js**
+
+  - [+] AgNowPlayingFullscreen — auto-follow (_applyState) > auto-follows when the backend switches to a new active source (0.01s)
+  - [+] AgNowPlayingFullscreen — auto-follow (_applyState) > does not reconnect SSE when source_id already matches targetSourceId
+  - [+] AgNowPlayingFullscreen — auto-follow (_applyState) > does not auto-follow when playing is false
+  - [+] AgNowPlayingFullscreen — auto-follow (_applyState) > auto-follows across multiple source changes
+  - [+] AgNowPlayingFullscreen — auto-follow (_applyState) > _switchSource sets userOverride and updates targetSourceId
+  - [+] AgNowPlayingFullscreen — auto-follow (_applyState) > _switchSource is a no-op when already on the target source
+  - [+] AgNowPlayingFullscreen — auto-follow (_applyState) > respects override — does not auto-follow after manual navigation
+  - [+] AgNowPlayingFullscreen — auto-follow (_applyState) > override is not lifted while user-chosen source is still playing
+  - [+] AgNowPlayingFullscreen — auto-follow (_applyState) > lifts override and auto-follows when user-chosen source stops playing
+  - [+] AgNowPlayingFullscreen — auto-follow (_applyState) > lifts override and follows new active after chosen source stops
+  - [+] AgNowPlayingFullscreen — auto-follow (_applyState) > SSE reconnects once when override is lifted and source switches
+  - [+] AgNowPlayingFullscreen — auto-follow (_applyState) > immediately follows new source when override is lifted on a playing:false tick
+  - [+] AgNowPlayingFullscreen — auto-follow (_applyState) > does not crash when override lifts and no source is playing
+  - [+] AgNowPlayingFullscreen — _rendererActive + signal path > rendererActive: true when connected and not bypassed
+  - [+] AgNowPlayingFullscreen — _rendererActive + signal path > rendererActive: false when bypassed
+  - [+] AgNowPlayingFullscreen — _rendererActive + signal path > rendererActive: false when disconnected
+  - [+] AgNowPlayingFullscreen — _rendererActive + signal path > rendererActive: false when no renderer status
+  - [+] AgNowPlayingFullscreen — _rendererActive + signal path > hasSignal: true with non-empty signal_path
+  - [+] AgNowPlayingFullscreen — _rendererActive + signal path > hasSignal: true with output_label only
+  - [+] AgNowPlayingFullscreen — _rendererActive + signal path > hasSignal: false with empty path and no label
+  - [+] AgNowPlayingFullscreen — _rendererActive + signal path > signal path shown when renderer bypassed and signal present
+  - [+] AgNowPlayingFullscreen — _rendererActive + signal path > signal path shown when no renderer and signal present
+  - [+] AgNowPlayingFullscreen — _rendererActive + signal path > renderer step present in signal_path when renderer active (backend enrichment)
+  - [+] AgNowPlayingFullscreen — _rendererActive + signal path > idle renderer badge shown when renderer active but signal_path is empty
+  - [+] AgNowPlayingFullscreen — _rendererActive + signal path > idle renderer badge NOT shown when renderer disconnected and no signal
+  - [+] AgNowPlayingFullscreen — _nextTrack cleared on renderer disconnect > _nextTrack set from renderer queue when connected
+  - [+] AgNowPlayingFullscreen — _nextTrack cleared on renderer disconnect > _nextTrack set to null when queue_next_title is null
+  - [+] AgNowPlayingFullscreen — _nextTrack cleared on renderer disconnect > _nextTrack cleared when renderer disconnects
+  - [+] AgNowPlayingFullscreen — _nextTrack cleared on renderer disconnect > _nextTrack cleared when renderer is bypassed
+  - [+] AgNowPlayingFullscreen — _nextTrack cleared on renderer disconnect > _nextTrack not touched when renderer is connected but queue_total is null
+  - [+] AgNowPlayingFullscreen — _coverErrorToken reset on track/source change > cover error token cleared when track title changes
+  - [+] AgNowPlayingFullscreen — _coverErrorToken reset on track/source change > cover error token cleared when source changes
+  - [+] AgNowPlayingFullscreen — _coverErrorToken reset on track/source change > cover error token preserved when same track and source
+  - [+] AgNowPlayingFullscreen — _coverErrorToken reset on track/source change > cover error token null when no error was set
+  - [+] AgNowPlayingFullscreen — _coverErrorToken reset on track/source change > cover error token cleared when title changes to null (track ends)
+
+**js/components/organisms/ag-now-playing.test.js**
+
+  - [+] AgNowPlaying — auto-follow (_onState) > follows the active source on first state
+  - [+] AgNowPlaying — auto-follow (_onState) > auto-switches when the active source changes
+  - [+] AgNowPlaying — auto-follow (_onState) > stays on active source when it remains active across ticks
+  - [+] AgNowPlaying — auto-follow (_onState) > clamps index to 0 when item count shrinks (no override)
+  - [+] AgNowPlaying — auto-follow (_onState) > shows first item when no source is flagged active
+  - [+] AgNowPlaying — auto-follow (_onState) > respects override — does not auto-switch after manual navigation
+  - [+] AgNowPlaying — auto-follow (_onState) > override is not lifted while user-chosen source is still playing
+  - [+] AgNowPlaying — auto-follow (_onState) > lifts override and auto-follows when user-chosen source stops playing
+  - [+] AgNowPlaying — auto-follow (_onState) > lifts override and follows new active source after chosen source stops
+  - [+] AgNowPlaying — auto-follow (_onState) > clamping also lifts override when items shrink below user index
+  - [+] AgNowPlaying — auto-follow (_onState) > prevShownId uses old items — override is lifted when chosen source disappears even after clamp
+  - [+] AgNowPlaying — auto-follow (_onState) > dot-click sets userOverride — next auto-follow tick respects it
+  - [+] AgNowPlaying — _rendererActive + connector badge > rendererActive: true when connected and not bypassed
+  - [+] AgNowPlaying — _rendererActive + connector badge > rendererActive: false when bypassed
+  - [+] AgNowPlaying — _rendererActive + connector badge > rendererActive: false when disconnected
+  - [+] AgNowPlaying — _rendererActive + connector badge > rendererActive: false when no renderer status
+  - [+] AgNowPlaying — _rendererActive + connector badge > connector badge hidden when native renderer active (uses_local_mpd=false)
+  - [+] AgNowPlaying — _rendererActive + connector badge > connector badge VISIBLE when local-MPD renderer active (upmpdcli, uses_local_mpd=true)
+  - [+] AgNowPlaying — _rendererActive + connector badge > connector badge visible when renderer bypassed
+  - [+] AgNowPlaying — _rendererActive + connector badge > connector badge visible when no renderer
+  - [+] AgNowPlaying — _rendererActive + connector badge > connector badge hidden when output_connector absent (no renderer)
+  - [+] AgNowPlaying — _rendererActive + connector badge > connector badge hidden when output_connector absent (renderer active)
+  - [+] AgNowPlaying — _rendererActive + connector badge > connector badge visible with TOSLINK when bypassed
+  - [+] AgNowPlaying — _rendererActive + connector badge > connector badge visible with TOSLINK when renderer disconnected
+
+**js/components/organisms/ag-user-modal.test.js**
+
+  - [+] AgUserModal._handleSave — password trim (Fix P3) > whitespace-only password (6 spaces) is rejected (0.03s)
+  - [+] AgUserModal._handleSave — password trim (Fix P3) > whitespace-only password (tabs) is rejected
+  - [+] AgUserModal._handleSave — password trim (Fix P3) > valid password passes validation
+  - [+] AgUserModal._handleSave — password trim (Fix P3) > password with surrounding spaces is trimmed before sending
+  - [+] AgUserModal._handleSave — password trim (Fix P3) > short username is rejected regardless of password
