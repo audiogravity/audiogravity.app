@@ -20,72 +20,9 @@ The fullscreen player now shows the full audio chain as it actually exists at an
 **With a native network renderer** (Marantz, Linn…) that has its own internal DAC:
 `• Qobuz → • Marantz PM7000N`
 
-The connector (USB / TOSLINK) is inserted automatically based on the active ALSA output and updates live when you switch. The source (Qobuz, Tidal, Radio, Library…) is always the first step. Radio shows "Radio" — not the station name, which is content metadata, not a chain step.
+The connector (USB / TOSLINK) is inserted automatically based on the active ALSA output and updates live when you switch. The source (Qobuz, Tidal, Radio, Library…) is always the first step.
 
 The separate `→ music.#1` overlay in the fullscreen player has been removed — the renderer is now one step among others in the chain. The mini player source row gains a compact `→ renderer_name` badge when a renderer is active.
-
-### Renderer routing and audio output — code review fixes
-
-A batch of targeted fixes from a code review covering the `feat/output-manager` branch:
-
-- **Renderer `connect()` HTTP 500** — connecting a renderer whose UDN in the route differed from the request body caused a silent KeyError. Fixed: the lookup now uses the body `udn` consistently.
-- **MPD output switch — unknown ID** — selecting an MPD output with an invalid `output_id` would silently disable all outputs. Now returns 404 before issuing any MPD command.
-- **Qobuz single-track to renderer** — playing a single Qobuz track to an active renderer was broken: the internal `play()` call had been removed in the queue refactor. Now correctly routes via `play_queue()` with cover art token forwarded.
-- **Renderer card stale on new session** — if a `renderer_status` SSE event arrived before the renderer list was loaded, the update was silently dropped, leaving the card stale. The card now triggers a reload in that case and applies the event on completion.
-- **Temperature alert spam** — a misconfigured push endpoint could cause the cooldown timestamp to be skipped, generating repeated temperature alerts for a single event. Cooldown now advances unconditionally.
-- **Qobuz proxy HTTP session** — the streaming proxy was opening a new `aiohttp.ClientSession` per request and closing it at the end of each stream, holding an open file descriptor for the duration. Now reuses the shared session pool; headers forwarded per-request.
-
-### Signal path and player — reliability fixes
-
-Several edge cases addressed in this batch:
-
-- **Native renderer — "Nothing playing" fixed** — with a network renderer (Marantz, Linn…) whose audio stack is self-contained (not routed through the local MPD), the fullscreen player was showing "Nothing playing" even when a track was actively playing. AG now reads the renderer's internal state directly: title, artist, album, cover art and transport position all appear correctly without requiring the local MPD to be in the chain.
-- **Native renderer — output bar was showing "No output selected"** — same root cause: when no local source was active the output bar could not determine the routing and showed "No output selected". The output label and signal path (e.g. `• Marantz PM7000N`) now reflect the renderer correctly.
-- **Cover art on consecutive album tracks** — if a track returned a 404 cover, subsequent tracks on the same album (same `cover_token`) were permanently blocked. The error token is now cleared on every track change.
-- **"Up next" strip cleared on disconnect** — the next-track strip in the fullscreen player now disappears when the renderer disconnects or is bypassed, instead of lingering indefinitely.
-- **Idle renderer badge** — when the renderer is connected but nothing is playing, the fullscreen player now shows the renderer name in the source row so you can confirm the routing without starting playback.
-- **Connector badge for upmpdcli** — the USB/TOSLINK badge was incorrectly hidden when upmpdcli (a local-MPD renderer) was active; it is now always visible since the physical connector is in the chain.
-- **Renderer "offline" after SID recovery** — after a backend restart, the renderer card could stay orange (unreachable) for up to 30 s even after the subscription ID was successfully renewed; now snaps back to green immediately.
-- **Signal path during reconnect window** — the backend no longer includes the renderer step in the signal path while its connection is being established (not yet reachable).
-- **Origin labels — single source of truth** — `GET /player/origins` exposes the canonical `origin → label` map. The UI now fetches it at startup, removing the need to keep two copies in sync across backend and frontend.
-
-### UPnP renderer — seeking within a Qobuz track
-
-UPnP renderers can now seek mid-track within a Qobuz stream. The AG proxy forwards HTTP `Range` requests from the renderer to the Qobuz CDN and relays the `206 Partial Content` response, so transport position scrubbing in the renderer's own UI (or any control point) works without restarting the stream from the beginning.
-
-### UPnP renderer — full album playback, NEXT / PREV and "Up next"
-
-When you play an album from Qobuz, Tidal or a MinimServer library to a UPnP renderer, AG now queues all tracks and chains them automatically — gapless where the renderer supports it, seamless in any case. Qobuz tracks are served through AG's internal proxy so URLs never expire, enabling both uninterrupted album play and manual navigation.
-
-The **NEXT** and **PREV** transport buttons in the fullscreen player now skip between tracks in the renderer queue. Buttons are disabled at boundaries (first / last track). Pressing both rapidly is safe — a 409 is returned if a transition is already in progress.
-
-The fullscreen player shows an **Up next** strip at the bottom with the next track's title, artist and cover art, updated in real time as the album progresses.
-
-### Install on your home screen (Android / Chrome)
-
-On Android, Chrome will now offer a compact **Install** banner at the bottom of the screen when Audiogravity is eligible for installation as a standalone app. Tap **Install** to add it to your home screen — the app then opens full-screen without the browser chrome, exactly like a native app. Dismissing the banner suppresses it for 30 days.
-
-On iPhone, use Safari's Share sheet → "Add to Home Screen" as before (iOS does not expose an install event to web apps).
-
-### Player stays visible when offline
-
-If you lose your network connection while Audiogravity is open, the player now keeps showing the last known track and source instead of going blank. A small **Offline** label appears in the source row to make the stale state explicit.
-
-On a cold reload (opening the app while offline), the last known player state is restored from local cache — so you can still see what was playing last, even without a live connection to the streamer.
-
-### UPnP renderer — reliable state after restart
-
-After an AG backend restart, the renderer badge now snaps back to the correct state (PLAYING / STOPPED) within seconds instead of waiting up to 30 s. Previously, the renderer kept sending events with a stale subscription ID that the restarted backend didn't recognise — the events were silently dropped, leaving the badge in a stale state until the next heartbeat. The backend now detects the mismatch, re-subscribes immediately, and refreshes the display.
-
-### UPnP renderer — live status indicator
-
-The renderer card in the Sources panel now reflects the true state of the device in real time:
-
-- **Connected** (green) — renderer is reachable and responding
-- **Unreachable** (orange) — the connection object is active but the device stopped responding (powered off, network loss). The card shows "unreachable — check device" and recovers automatically within 30 s when the device comes back — no page refresh, no manual reconnect.
-- **Offline** (red) — no renderer configured
-
-After a backend restart, the auto-reconnect now retries with exponential backoff (30 s → 60 s → … → 5 min cap) instead of giving up after one attempt. If upmpdcli or the renderer starts later than the AG core, the badge goes green as soon as the device responds.
 
 ### Output selector — switch between physical outputs and network renderers
 
@@ -100,9 +37,54 @@ The active output is highlighted in green. An unreachable renderer shows orange.
 
 **Remove a renderer** — swipe a renderer row to the left to permanently remove it from the list. No need to reconnect or scan again to add it back — use the Scan button.
 
-### UPnP renderer — disconnect now stops playback
+### UPnP renderer — full album playback, NEXT / PREV and "Up next"
 
-Clicking **Disconnect** in the Sources panel now immediately stops the renderer. Previously the renderer kept playing its stream independently until it finished — the control point disconnection had no effect on the audio.
+When you play an album from Qobuz, Tidal or a MinimServer library to a UPnP renderer, AG now queues all tracks and chains them automatically — gapless where the renderer supports it, seamless in any case. Qobuz tracks are served through AG's internal proxy so URLs never expire, enabling both uninterrupted album play and manual navigation.
+
+The **NEXT** and **PREV** transport buttons in the fullscreen player now skip between tracks in the renderer queue. Buttons are disabled at boundaries (first / last track). Pressing both rapidly is safe — a 409 is returned if a transition is already in progress.
+
+The fullscreen player shows an **Up next** strip at the bottom with the next track's title, artist and cover art, updated in real time as the album progresses.
+
+### UPnP renderer — seeking within a Qobuz track
+
+UPnP renderers can now seek mid-track within a Qobuz stream. The AG proxy forwards HTTP `Range` requests from the renderer to the Qobuz CDN and relays the `206 Partial Content` response, so transport position scrubbing in the renderer's own UI (or any control point) works without restarting the stream from the beginning.
+
+### UPnP renderer — live status indicator
+
+The renderer card in the Sources panel now reflects the true state of the device in real time:
+
+- **Connected** (green) — renderer is reachable and responding
+- **Unreachable** (orange) — the connection object is active but the device stopped responding (powered off, network loss). The card shows "unreachable — check device" and recovers automatically within 30 s when the device comes back — no page refresh, no manual reconnect.
+- **Offline** (red) — no renderer configured
+
+After a backend restart, the auto-reconnect now retries with exponential backoff (30 s → 60 s → … → 5 min cap) instead of giving up after one attempt. If upmpdcli or the renderer starts later than the AG core, the badge goes green as soon as the device responds.
+
+### Install on your home screen (Android / Chrome)
+
+On Android, Chrome will now offer a compact **Install** banner at the bottom of the screen when Audiogravity is eligible for installation as a standalone app. Tap **Install** to add it to your home screen — the app then opens full-screen without the browser chrome, exactly like a native app. Dismissing the banner suppresses it for 30 days.
+
+On iPhone, use Safari's Share sheet → "Add to Home Screen" as before (iOS does not expose an install event to web apps).
+
+### Player stays visible when offline
+
+If you lose your network connection while Audiogravity is open, the player now keeps showing the last known track and source instead of going blank. A small **Offline** label appears in the source row to make the stale state explicit.
+
+On a cold reload (opening the app while offline), the last known player state is restored from local cache — so you can still see what was playing last, even without a live connection to the streamer.
+
+### Reliability & fixes
+
+- **Native renderer — "Nothing playing" fixed** — with a network renderer (Marantz, Linn…) whose audio stack is self-contained, the fullscreen player was showing "Nothing playing" even when a track was actively playing. AG now reads the renderer's internal state directly: title, artist, album, cover art and transport position all appear correctly without requiring the local MPD to be in the chain.
+- **Native renderer — output bar "No output selected" fixed** — same root cause: when no local source was active the output bar could not determine the routing. The output label and signal path (e.g. `• Marantz PM7000N`) now reflect the renderer correctly.
+- **Disconnect stops playback** — clicking Disconnect in the Sources panel now immediately stops the renderer. Previously the renderer kept playing its stream independently until it finished.
+- **Renderer snaps back after restart** — after an AG backend restart, the renderer badge now reflects the correct state (PLAYING / STOPPED) within seconds instead of waiting up to 30 s. The backend detects the stale subscription ID, re-subscribes immediately, and refreshes the display.
+- **Signal path during reconnect window** — the renderer step is no longer shown in the signal path while the connection is being re-established after a restart.
+- **Qobuz single track to renderer** — playing a single Qobuz track (not a full album) to an active renderer was silently broken since the queue refactor. Now correctly routes via `play_queue()` with cover art forwarded.
+- **Renderer card stale on new session** — if a renderer status event arrived before the renderer list finished loading, the card was left stale. It now triggers a reload and applies the event on completion.
+- **Cover art on consecutive album tracks** — if a track returned a 404 cover, subsequent tracks on the same album were permanently blocked. The error is now cleared on every track change.
+- **"Up next" strip cleared on disconnect** — the next-track strip now disappears when the renderer disconnects or is bypassed, instead of lingering indefinitely.
+- **Idle renderer badge** — when the renderer is connected but nothing is playing, the fullscreen player now shows the renderer name in the source row so you can confirm the routing without starting playback.
+- **Connector badge for upmpdcli** — the USB/TOSLINK badge was incorrectly hidden when upmpdcli was active; it is now always visible since the physical connector is in the chain.
+- **MPD output — invalid ID now returns 404** — selecting an MPD output with an unknown `output_id` would previously silently disable all outputs. Now correctly returns 404 before issuing any MPD command.
 
 ---
 
